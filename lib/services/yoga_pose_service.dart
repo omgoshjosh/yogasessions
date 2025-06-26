@@ -13,10 +13,9 @@ class YogaPoseService {
   Future<YogaPose> createYogaPose(YogaPose poseData) async {
     final data = poseData.toJson(); // Freezed model's toJson
 
-    final DocumentReference docRef = await _firestoreService.addDocument(
-      collectionPath: _collectionPath,
-      data: data,
-    );
+    // Corrected: Positional arguments
+    final DocumentReference docRef =
+        await _firestoreService.addDocument(_collectionPath, data);
     return poseData.copyWith(id: docRef.id);
   }
 
@@ -77,11 +76,9 @@ class YogaPoseService {
     if (pose.id.isEmpty) {
       throw ArgumentError('YogaPose ID cannot be empty for an update.');
     }
+    // Corrected: Positional arguments
     await _firestoreService.updateDocument(
-      collectionPath: _collectionPath,
-      docId: pose.id,
-      data: pose.toJson(),
-    );
+        _collectionPath, pose.id, pose.toJson());
   }
 
   // Delete a YogaPose
@@ -89,9 +86,7 @@ class YogaPoseService {
     if (id.isEmpty) {
       throw ArgumentError('YogaPose ID cannot be empty for delete.');
     }
-    await _firestoreService.deleteDocument(
-      collectionPath: _collectionPath,
-      docId: id,
-    );
+    // Corrected: Positional arguments
+    await _firestoreService.deleteDocument(_collectionPath, id);
   }
 }
