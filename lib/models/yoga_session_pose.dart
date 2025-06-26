@@ -1,34 +1,23 @@
-class YogaSessionPose {
-  final String id; // Unique ID for this instance in the session
-  final String originalYogaPoseId; // ID of the YogaPose it was based on
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  String name; // Initially copied from YogaPose, editable if isCustom = true
-  String description; // Initially copied, editable if isCustom = true
-  String? sanskritName; // Initially copied, editable if isCustom = true
-  String? imageUrl; // Initially copied, editable if isCustom = true
+part 'yoga_session_pose.freezed.dart';
+part 'yoga_session_pose.g.dart';
 
-  int durationInSeconds;
-  bool isCustom;
+@freezed
+abstract class YogaSessionPose with _$YogaSessionPose {
+  const YogaSessionPose._();
 
-  YogaSessionPose({
-    required this.id,
-    required this.originalYogaPoseId,
-    required this.name,
-    required this.description,
-    this.sanskritName,
-    this.imageUrl,
-    required this.durationInSeconds,
-    this.isCustom = false, // Defaults to false
-  });
+  const factory YogaSessionPose({
+    required String id,
+    required String originalYogaPoseId, // Foreign key to the library YogaPose.id
+    required String name, // Can be customized for this session instance
+    required String description, // Can be customized for this session instance
+    String? sanskritName, // Can be customized for this session instance
+    String? imageUrl, // Can be customized for this session instance
+    required int durationInSeconds,
+    required int sessionOrderIndex, // Order among all components in a YogaSession
+    @Default(false) bool isCustomSnapshot, // True if name, desc, etc., were overridden
+  }) = _YogaSessionPose;
 
-// When creating a YogaSessionPose from a YogaPose:
-// 1. Populate 'name', 'description', 'sanskritName', 'imageUrl' from the YogaPose.
-// 2. Set 'originalYogaPoseId' to the YogaPose's ID.
-// 3. Set 'durationInSeconds' as specified by the user for this session.
-// 4. 'isCustom' remains false.
-//
-// If the user later modifies details of this YogaSessionPose (e.g., changes the name
-// or description for this session only), you would:
-// 1. Update the respective fields (name, description, etc.).
-// 2. Set 'isCustom = true'.
+  factory YogaSessionPose.fromJson(Map<String, dynamic> json) => _$YogaSessionPoseFromJson(json);
 }

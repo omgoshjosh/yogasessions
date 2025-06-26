@@ -1,18 +1,23 @@
-class YogaPose {
-  final String id;
-  final String name;
-  final String description;
-  final String? sanskritName;
-  final String? imageUrl;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  YogaPose({
-    required this.id,
-    required this.name,
-    required this.description,
-    this.sanskritName,
-    this.imageUrl,
-  });
+part 'yoga_pose.freezed.dart';
+part 'yoga_pose.g.dart';
 
-  // You might want to add factory constructors for fromJson/toJson later
-  // for data persistence and API communication.
+@freezed
+abstract class YogaPose with _$YogaPose {
+  // Added private empty constructor
+  const YogaPose._();
+
+  const factory YogaPose({
+    required String id,
+    String? originalId, // ID of the pose this was copied from, if any
+    required String name,
+    required String description,
+    String? sanskritName,
+    String? imageUrl,
+    @Default('-1') String creatorUserId, // -1 for system/seed, user ID otherwise
+    @Default(false) bool isPublished,   // True if visible in a public/featured library
+  }) = _YogaPose;
+
+  factory YogaPose.fromJson(Map<String, dynamic> json) => _$YogaPoseFromJson(json);
 }
