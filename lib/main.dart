@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yogasessions/screens/auth_screen.dart';
@@ -7,7 +9,15 @@ import 'package:yogasessions/screens/session_detail_screen.dart';
 import 'package:yogasessions/screens/session_player_screen.dart';
 import 'package:yogasessions/screens/sessions_list_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // TODO: hook this up to the cloud
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  await Firebase.initializeApp(
+    demoProjectId: "demo-project-id",
+  );
   runApp(const MyApp());
 }
 
