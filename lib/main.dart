@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:yogasessions/screens/home_screen.dart';
 import 'package:yogasessions/screens/featured_sessions_screen.dart';
 import 'package:yogasessions/screens/saved_sessions_screen.dart';
+import 'package:yogasessions/screens/custom_sessions_screen.dart';
 import 'package:yogasessions/screens/session_detail_screen.dart';
 import 'package:yogasessions/screens/session_builder_screen.dart';
 import 'package:yogasessions/screens/session_player_screen.dart';
@@ -12,6 +13,9 @@ import 'package:yogasessions/screens/saved_poses_screen.dart';
 import 'package:yogasessions/screens/pose_detail_screen.dart';
 import 'package:yogasessions/screens/pose_builder_screen.dart';
 import 'package:yogasessions/screens/pose_library_screen.dart';
+import 'package:yogasessions/screens/featured_flows_screen.dart';
+import 'package:yogasessions/screens/saved_flows_screen.dart';
+import 'package:yogasessions/screens/custom_flows_screen.dart';
 import 'package:yogasessions/screens/flow_detail_screen.dart';
 import 'package:yogasessions/screens/flow_builder_screen.dart';
 import 'package:yogasessions/screens/settings_screen.dart';
@@ -20,8 +24,6 @@ import 'package:yogasessions/screens/login_screen.dart';
 import 'package:yogasessions/screens/signup_screen.dart';
 import 'package:yogasessions/screens/onboarding_screen.dart';
 import 'package:yogasessions/screens/about_screen.dart';
-import 'package:yogasessions/screens/sessions_list_screen.dart';
-
 
 void main() {
   runApp(const YogaSessionsApp());
@@ -49,17 +51,18 @@ final _router = GoRouter(
       path: '/',
       builder: (context, state) => const HomeScreen(),
     ),
+    // SESSIONS
     GoRoute(
-      path: '/featured-sessions',
+      path: '/sessions/featured',
       builder: (context, state) => const FeaturedSessionsScreen(),
     ),
     GoRoute(
-      path: '/saved-sessions',
+      path: '/sessions/saved',
       builder: (context, state) => const SavedSessionsScreen(),
     ),
     GoRoute(
-      path: '/sessions-list',
-      builder: (context, state) => const SessionsListScreen(),
+      path: '/sessions/custom',
+      builder: (context, state) => const CustomSessionsScreen(),
     ),
     GoRoute(
       path: '/session/:id',
@@ -75,17 +78,40 @@ final _router = GoRouter(
       builder: (context, state) =>
           SessionPlayerScreen(sessionId: state.pathParameters['id']!),
     ),
+    // FLOWS
     GoRoute(
-      path: '/featured-poses',
+      path: '/flows/featured',
+      builder: (context, state) => const FeaturedFlowsScreen(),
+    ),
+    GoRoute(
+      path: '/flows/saved',
+      builder: (context, state) => const SavedFlowsScreen(),
+    ),
+    GoRoute(
+      path: '/flows/custom',
+      builder: (context, state) => const CustomFlowsScreen(),
+    ),
+    GoRoute(
+      path: '/flow/:id',
+      builder: (context, state) =>
+          FlowDetailScreen(flowId: state.pathParameters['id']!),
+    ),
+    GoRoute(
+      path: '/flow-builder',
+      builder: (context, state) => const FlowBuilderScreen(),
+    ),
+    // POSES
+    GoRoute(
+      path: '/poses/featured',
       builder: (context, state) => const FeaturedPosesScreen(),
     ),
     GoRoute(
-      path: '/custom-poses',
-      builder: (context, state) => const CustomPosesScreen(),
+      path: '/poses/saved',
+      builder: (context, state) => const SavedPosesScreen(),
     ),
     GoRoute(
-      path: '/saved-poses',
-      builder: (context, state) => const SavedPosesScreen(),
+      path: '/poses/custom',
+      builder: (context, state) => const CustomPosesScreen(),
     ),
     GoRoute(
       path: '/pose-library',
@@ -100,15 +126,7 @@ final _router = GoRouter(
       path: '/pose-builder',
       builder: (context, state) => const PoseBuilderScreen(),
     ),
-    GoRoute(
-      path: '/flow/:id',
-      builder: (context, state) =>
-          FlowDetailScreen(flowId: state.pathParameters['id']!),
-    ),
-    GoRoute(
-      path: '/flow-builder',
-      builder: (context, state) => const FlowBuilderScreen(),
-    ),
+    // OTHER
     GoRoute(
       path: '/settings',
       builder: (context, state) => const SettingsScreen(),
