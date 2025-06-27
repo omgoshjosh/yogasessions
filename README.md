@@ -11,7 +11,10 @@
 *   **User Authentication:** A complete login and signup flow to manage user accounts and persist their personal content.
 *   **Flexible Navigation:** A robust routing system built with `go_router` that supports nested views and a clear navigational hierarchy.
 
-### **Development Phases**
+<details>
+  <summary>
+    <h3><strong>Development Phases</strong></h3>
+  </summary>
 
 The project is being developed in 8 distinct phases:
 
@@ -23,6 +26,7 @@ The project is being developed in 8 distinct phases:
 *   **Phase 6: Content Creation & Management:** Building the "builder" screens (`PoseBuilderScreen`, `SessionBuilderScreen`, `FlowBuilderScreen`).
 *   **Phase 7: User Profile & Settings:** Implementing the `ProfileScreen` and `SettingsScreen`.
 *   **Phase 8: Finalization & Polish:** Focusing on error handling, loading states, UI/UX refinement, and final testing.
+</details>
 
 ### **Technical Stack**
 
