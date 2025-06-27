@@ -11,23 +11,6 @@
 *   **User Authentication:** A complete login and signup flow to manage user accounts and persist their personal content.
 *   **Flexible Navigation:** A robust routing system built with `go_router` that supports nested views and a clear navigational hierarchy.
 
-<details>
-  <summary>
-    <h3><strong>Development Phases</strong></h3>
-  </summary>
-
-The project is being developed in 8 distinct phases:
-
-*   **✅ Phase 1: Foundational UI & Navigation Setup:** Creating all placeholder screens and setting up the initial `GoRouter` configuration.
-*   **✅ Phase 2: Advanced Routing and Refinement:** Implementing nested routes, debugging navigation, and ensuring all placeholder screens are correctly displayed.
-*   **Phase 3: Authentication:** Building the UI and logic for Login/Signup and integrating with Firebase Authentication.
-*   **Phase 4: Core Content Display:** Implementing the "featured" screens to fetch and display public data from Firestore.
-*   **Phase 5: User-Specific Content Display:** Building the "saved" and "custom" screens to display data specific to the logged-in user.
-*   **Phase 6: Content Creation & Management:** Building the "builder" screens (`PoseBuilderScreen`, `SessionBuilderScreen`, `FlowBuilderScreen`).
-*   **Phase 7: User Profile & Settings:** Implementing the `ProfileScreen` and `SettingsScreen`.
-*   **Phase 8: Finalization & Polish:** Focusing on error handling, loading states, UI/UX refinement, and final testing.
-</details>
-
 ### **Technical Stack**
 
 *   **Framework:** Flutter
