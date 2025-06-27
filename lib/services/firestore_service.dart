@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:yogasessions/models/yoga_pose.dart'; // Assuming YogaPose is updated for seeding
+import 'package:yogasessions/models/poses/yoga_pose.dart'; // Assuming YogaPose is updated for seeding
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/yoga_pose.dart';
+import '../models/poses/yoga_pose.dart';
 import 'firestore_service.dart';
 
 class YogaPoseService {

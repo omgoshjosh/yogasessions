@@ -1,23 +1,25 @@
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yogasessions/screens/home_screen.dart';
-import 'package:yogasessions/screens/featured_sessions_screen.dart';
-import 'package:yogasessions/screens/saved_sessions_screen.dart';
-import 'package:yogasessions/screens/custom_sessions_screen.dart';
-import 'package:yogasessions/screens/session_detail_screen.dart';
-import 'package:yogasessions/screens/session_builder_screen.dart';
-import 'package:yogasessions/screens/session_player_screen.dart';
-import 'package:yogasessions/screens/featured_poses_screen.dart';
-import 'package:yogasessions/screens/custom_poses_screen.dart';
-import 'package:yogasessions/screens/saved_poses_screen.dart';
-import 'package:yogasessions/screens/pose_detail_screen.dart';
-import 'package:yogasessions/screens/pose_builder_screen.dart';
-import 'package:yogasessions/screens/pose_library_screen.dart';
-import 'package:yogasessions/screens/featured_flows_screen.dart';
-import 'package:yogasessions/screens/saved_flows_screen.dart';
-import 'package:yogasessions/screens/custom_flows_screen.dart';
-import 'package:yogasessions/screens/flow_detail_screen.dart';
-import 'package:yogasessions/screens/flow_builder_screen.dart';
+import 'package:yogasessions/screens/public_home_screen.dart'; // Import the new screen
+import 'package:yogasessions/screens/admin_screen.dart'; // Rename for clarity
+import 'package:yogasessions/screens/sessions/featured_sessions_screen.dart';
+import 'package:yogasessions/screens/sessions/saved_sessions_screen.dart';
+import 'package:yogasessions/screens/sessions/custom_sessions_screen.dart';
+import 'package:yogasessions/screens/sessions/session_detail_screen.dart';
+import 'package:yogasessions/screens/sessions/session_builder_screen.dart';
+import 'package:yogasessions/screens/sessions/session_player_screen.dart';
+import 'package:yogasessions/screens/poses/featured_poses_screen.dart';
+import 'package:yogasessions/screens/poses/custom_poses_screen.dart';
+import 'package:yogasessions/screens/poses/saved_poses_screen.dart';
+import 'package:yogasessions/screens/poses/pose_detail_screen.dart';
+import 'package:yogasessions/screens/poses/pose_builder_screen.dart';
+import 'package:yogasessions/screens/poses/pose_library_screen.dart';
+import 'package:yogasessions/screens/flows/featured_flows_screen.dart';
+import 'package:yogasessions/screens/flows/saved_flows_screen.dart';
+import 'package:yogasessions/screens/flows/custom_flows_screen.dart';
+import 'package:yogasessions/screens/flows/flow_detail_screen.dart';
+import 'package:yogasessions/screens/flows/flow_builder_screen.dart';
 import 'package:yogasessions/screens/settings_screen.dart';
 import 'package:yogasessions/screens/profile_screen.dart';
 import 'package:yogasessions/screens/login_screen.dart';
@@ -49,7 +51,11 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const PublicHomeScreen(), // New default home
+    ),
+    GoRoute(
+      path: '/admin', // New route for the admin panel
+      builder: (context, state) => const AdminScreen(),
     ),
     // SESSIONS
     GoRoute(
