@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart'; // Import GoRouter
 
 class CustomPosesScreen extends StatelessWidget {
   const CustomPosesScreen({super.key});
@@ -6,8 +7,19 @@ class CustomPosesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Custom Poses')),
-      body: Center(child: Text('Custom Poses Placeholder')),
+      appBar: AppBar(
+        title: const Text('Custom Poses'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'Go Home',
+            onPressed: () {
+              context.go('/');
+            },
+          ),
+        ],
+      ),
+      body: const Center(child: Text('CustomPosesScreen Placeholder')),
     );
   }
 }

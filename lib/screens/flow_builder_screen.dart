@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FlowBuilderScreen extends StatelessWidget {
-  final String? flowId;
-  const FlowBuilderScreen({super.key, this.flowId});
+  const FlowBuilderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(flowId == null ? 'Create Flow' : 'Edit Flow')),
-      body: Center(child: Text('Flow Builder Placeholder (ID: ${flowId ?? 'New'})')),
+      appBar: AppBar(
+        title: const Text('Flow Builder'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'Go Home',
+            onPressed: () {
+              context.go('/');
+            },
+          ),
+        ],
+      ),
+      body: const Center(child: Text('FlowBuilderScreen Placeholder')),
     );
   }
 }

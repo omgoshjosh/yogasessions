@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PoseBuilderScreen extends StatelessWidget {
-  final String? poseId;
-  const PoseBuilderScreen({super.key, this.poseId});
+  const PoseBuilderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(poseId == null ? 'Create Pose' : 'Edit Pose')),
-      body: Center(child: Text('Pose Builder Placeholder (ID: ${poseId ?? 'New'})')),
+      appBar: AppBar(
+        title: const Text('Pose Builder'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'Go Home',
+            onPressed: () {
+              context.go('/');
+            },
+          ),
+        ],
+      ),
+      body: const Center(child: Text('PoseBuilderScreen Placeholder')),
     );
   }
 }

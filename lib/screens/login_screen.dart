@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; // Import GoRouter
+import 'package:go_router/go_router.dart';
 
-class SavedSessionsScreen extends StatelessWidget {
-  const SavedSessionsScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Saved Sessions'),
+        title: const Text('Login'),
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
@@ -19,7 +19,7 @@ class SavedSessionsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text('SavedSessionsScreen Placeholder')),
+      body: const Center(child: Text('Login Screen Placeholder')),
     );
   }
 }

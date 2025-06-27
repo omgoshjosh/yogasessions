@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; // Import GoRouter
+import 'package:go_router/go_router.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // Scaffold can't be const if AppBar isn't or body isn't
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'), // Title can still be const
+        title: const Text('Settings'),
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
