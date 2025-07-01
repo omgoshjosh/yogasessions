@@ -62,8 +62,8 @@
     "source": "dataconnect"
   },
   "firestore": {
-    "database": "(default)",
-    "location": "us-west2",
+    "database": "yogasessions",
+    "location": "nam5",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },

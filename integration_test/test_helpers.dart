@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 class TestHelpers {
   final FirebaseFirestore firestore;
-  final FirebasemkAuth auth;
+  final FirebaseAuth auth;
 
   TestHelpers(this.firestore, this.auth);
 
