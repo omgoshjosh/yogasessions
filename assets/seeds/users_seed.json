@@ -1,0 +1,24 @@
+
+[
+  {
+    "email": null,
+    "displayName": "Guest User",
+    "photoUrl": "assets/images/profile/default_profile.png",
+    "isEmailVerified": false,
+    "isAdmin": false
+  },
+  {
+    "email": "registered.user@example.com",
+    "displayName": "Registered User",
+    "photoUrl": "assets/images/profile/default_profile.png",
+    "isEmailVerified": true,
+    "isAdmin": false
+  },
+  {
+    "email": "senterright@gmail.com",
+    "displayName": "Admin",
+    "photoUrl": "assets/images/profile/default_profile.png",
+    "isEmailVerified": true,
+    "isAdmin": true
+  }
+]

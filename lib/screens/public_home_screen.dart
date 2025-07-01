@@ -10,7 +10,7 @@ class PublicHomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // The test looks for this specific key to verify it's on the correct screen.
-        title: const Text('YogaSessions', key: Key('public_home_screen_title')),
+        title: const Text('Yoga Sessions', key: Key('public_home_screen_title')),
       ),
       body: Center(
         child: Column(

@@ -14,7 +14,10 @@ abstract class YogaPose with _$YogaPose {
     required String name,
     required String description,
     String? sanskritName,
+    String? category,
+    String? difficulty,
     String? imageUrl,
+    String? videoUrl,
     @Default('-1') String creatorUserId, // -1 for system/seed, user ID otherwise
     @Default(false) bool isPublished,   // True if visible in a public/featured library
   }) = _YogaPose;
