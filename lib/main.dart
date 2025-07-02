@@ -6,20 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// from https://firebase.google.com/codelabs/get-started-firebase-emulators-and-flutter#3
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-// import 'app_state.dart';
 import 'firebase_options.dart';
-// import 'logged_in_view.dart';
-// import 'logged_out_view.dart';
-// screens
 import 'package:yogasessions/screens/public_home_screen.dart';
 import 'package:yogasessions/screens/admin_screen.dart';
 import 'package:yogasessions/screens/sessions/featured_sessions_screen.dart';
@@ -46,12 +33,8 @@ import 'package:yogasessions/screens/signup_screen.dart';
 import 'package:yogasessions/screens/onboarding_screen.dart';
 import 'package:yogasessions/screens/about_screen.dart';
 
-// This constant is true if we are running the app from a 'flutter test' command.
-// const bool kIsTestMode = bool.fromEnvironment('flutter.test');
-// const bool kIsDevMode = bool.fromEnvironment('flutter.debug');
-Future _connectToFirebaseEmulator() async {
+Future connectToFirebaseEmulator() async {
   final localHostString = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-  print('localHostString: $localHostString');
 
   FirebaseFirestore.instance.settings = Settings(
     host: '$localHostString:7979',
@@ -60,38 +43,59 @@ Future _connectToFirebaseEmulator() async {
   );
 
   await FirebaseAuth.instance.useAuthEmulator(localHostString, 9099);
-  print('about to FirebaseFirestore.instance.useFirestoreEmulator');
   FirebaseFirestore.instance.useFirestoreEmulator(localHostString, 7979);
 }
 
 void main() async {
-  // Ensure Flutter is ready.
   WidgetsFlutterBinding.ensureInitialized();
-  // Initialize Firebase.
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
   if (kDebugMode) {
-    await _connectToFirebaseEmulator();
-    print('about to await FirebaseAuth.instance.useAuthEmulator');
-    // If we're in a test environment, point all Firebase services to the local emulators.
-    // await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
-    // Add other emulators like Storage here if needed.
+    await connectToFirebaseEmulator();
   }
 
-  print('about to runApp(const YogaSessionsApp())');
   runApp(const YogaSessionsApp());
 }
 
-class YogaSessionsApp extends StatelessWidget {
+class YogaSessionsApp extends StatefulWidget {
   const YogaSessionsApp({super.key});
 
   @override
+  State<YogaSessionsApp> createState() => _YogaSessionsAppState();
+}
+
+class _YogaSessionsAppState extends State<YogaSessionsApp> {
+  bool _isSigningIn = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _signIn();
+  }
+
+  Future<void> _signIn() async {
+    if (FirebaseAuth.instance.currentUser == null) {
+      await FirebaseAuth.instance.signInAnonymously();
+    }
+    setState(() {
+      _isSigningIn = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (_isSigningIn) {
+      return const MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+      );
+    }
+
     return MaterialApp.router(
       title: 'Yoga Sessions',
       theme: ThemeData(

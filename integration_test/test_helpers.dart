@@ -58,7 +58,7 @@ class TestHelpers {
           switch (e.code) {
             case 'operation-not-allowed':
               print('Anonymous auth has not been enabled for this project.');
-              break;
+              // break;
             default:
               print(e);
               print('Unknown error.');
@@ -70,6 +70,10 @@ class TestHelpers {
 
       // 2. Use the generated UID to create a document in Firestore
       if (user != null) {
+        print(userSeed);
+        print('userSeed above');
+        print(user);
+        print('user above');
         print('about to set document in Firestore');
         await firestore.collection('users').doc(user.uid).set({
           'displayName': userSeed['displayName'],
@@ -83,78 +87,77 @@ class TestHelpers {
   }
 
   // Placeholder for seeding poses
-  Future<void> _seedPoses() async {
-    final posesString = await rootBundle.loadString('assets/seeds/yoga_poses_seed.json');
-    final List<dynamic> poses = json.decode(posesString);
-    print('about to add poses');
-    for (final pose in poses) {
-      await firestore.collection('yoga_poses').add(pose);
-    }
-  }
+  // Future<void> _seedPoses() async {
+  //   final posesString = await rootBundle.loadString('assets/seeds/yoga_poses_seed.json');
+  //   final List<dynamic> poses = json.decode(posesString);
+  //   print('about to add poses');
+  //   for (final pose in poses) {
+  //     await firestore.collection('yoga_poses').add(pose);
+  //   }
+  // }
 
   // Placeholder for seeding flows and their relations
-  Future<void> _seedFlowsAndRelations() async {
-    final flowsString = await rootBundle.loadString('assets/seeds/yoga_flows_seed.json');
-    final Map<String, dynamic> flowsData = json.decode(flowsString);
-    
-    final List<dynamic> flows = flowsData['yoga_flows'];
-    final Map<String, dynamic> relations = flowsData['yoga_flow_poses'];
-
-    for (final flow in flows) {
-       await firestore.collection('yoga_flows').doc(flow['name']).set(flow);
-    }
-
-    for (final entry in relations.entries) {
-      final String flowName = entry.key;
-      final List<dynamic> poses = entry.value;
-      for (final pose in poses) {
-        await firestore
-            .collection('yoga_flows')
-            .doc(flowName)
-            .collection('yoga_flow_poses')
-            .add(pose);
-      }
-    }
-  }
+  // Future<void> _seedFlowsAndRelations() async {
+  //   final flowsString = await rootBundle.loadString('assets/seeds/yoga_flows_seed.json');
+  //   final Map<String, dynamic> flowsData = json.decode(flowsString);
+  //
+  //   final List<dynamic> flows = flowsData['yoga_flows'];
+  //   final Map<String, dynamic> relations = flowsData['yoga_flow_poses'];
+  //
+  //   for (final flow in flows) {
+  //      await firestore.collection('yoga_flows').doc(flow['name']).set(flow);
+  //   }
+  //
+  //   for (final entry in relations.entries) {
+  //     final String flowName = entry.key;
+  //     final List<dynamic> poses = entry.value;
+  //     for (final pose in poses) {
+  //       await firestore
+  //           .collection('yoga_flows')
+  //           .doc(flowName)
+  //           .collection('yoga_flow_poses')
+  //           .add(pose);
+  //     }
+  //   }
+  // }
 
   // Placeholder for seeding sessions and their relations
-  Future<void> _seedSessionsAndRelations() async {
-    final sessionsString = await rootBundle.loadString('assets/seeds/yoga_sessions_seed.json');
-    final Map<String, dynamic> sessionsData = json.decode(sessionsString);
-
-    final List<dynamic> sessions = sessionsData['yoga_sessions'];
-    final Map<String, dynamic> flowRelations = sessionsData['yoga_session_flows'];
-    final Map<String, dynamic> poseRelations = sessionsData['yoga_session_poses'];
-
-    for (final session in sessions) {
-      await firestore.collection('yoga_sessions').doc(session['name']).set(session);
-    }
-
-    for (final entry in flowRelations.entries) {
-       final String sessionName = entry.key;
-       final List<dynamic> flows = entry.value;
-       for (final flow in flows) {
-         await firestore
-            .collection('yoga_sessions')
-            .doc(sessionName)
-            .collection('yoga_session_flows')
-            .add(flow);
-       }
-    }
-    
-    for (final entry in poseRelations.entries) {
-       final String sessionName = entry.key;
-       final List<dynamic> poses = entry.value;
-       for (final pose in poses) {
-         await firestore
-            .collection('yoga_sessions')
-            .doc(sessionName)
-            .collection('yoga_session_poses')
-            .add(pose);
-       }
-    }
-  }
-
+  // Future<void> _seedSessionsAndRelations() async {
+  //   final sessionsString = await rootBundle.loadString('assets/seeds/yoga_sessions_seed.json');
+  //   final Map<String, dynamic> sessionsData = json.decode(sessionsString);
+  //
+  //   final List<dynamic> sessions = sessionsData['yoga_sessions'];
+  //   final Map<String, dynamic> flowRelations = sessionsData['yoga_session_flows'];
+  //   final Map<String, dynamic> poseRelations = sessionsData['yoga_session_poses'];
+  //
+  //   for (final session in sessions) {
+  //     await firestore.collection('yoga_sessions').doc(session['name']).set(session);
+  //   }
+  //
+  //   for (final entry in flowRelations.entries) {
+  //      final String sessionName = entry.key;
+  //      final List<dynamic> flows = entry.value;
+  //      for (final flow in flows) {
+  //        await firestore
+  //           .collection('yoga_sessions')
+  //           .doc(sessionName)
+  //           .collection('yoga_session_flows')
+  //           .add(flow);
+  //      }
+  //   }
+  //
+  //   for (final entry in poseRelations.entries) {
+  //      final String sessionName = entry.key;
+  //      final List<dynamic> poses = entry.value;
+  //      for (final pose in poses) {
+  //        await firestore
+  //           .collection('yoga_sessions')
+  //           .doc(sessionName)
+  //           .collection('yoga_session_poses')
+  //           .add(pose);
+  //      }
+  //   }
+  // }
 
   Future<void> _clearFirestore() async {
     // A more robust way to clear all collections
