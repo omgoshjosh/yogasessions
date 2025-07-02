@@ -1,0 +1,29 @@
+{
+  "yoga_sessions": [
+    {
+      "name": "Morning Energizer",
+      "description": "A quick session to start your day with energy."
+    },
+    {
+      "name": "Evening Wind Down",
+      "description": "A gentle session to relax before bed."
+    }
+  ],
+  "yoga_session_flows": {
+    "Morning Energizer": [
+      "Sun Salutation A"
+    ]
+  },
+  "yoga_session_poses": {
+    "Morning Energizer": [
+        "Warrior I",
+        "Warrior II",
+        "Triangle Pose"
+    ],
+    "Evening Wind Down": [
+      "Child's Pose",
+      "Cat-Cow Pose",
+      "Corpse Pose"
+    ]
+  }
+}

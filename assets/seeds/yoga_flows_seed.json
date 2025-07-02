@@ -1,0 +1,25 @@
+{
+  "yoga_flows": [
+    {
+      "name": "Sun Salutation A",
+      "description": "A classic vinyasa flow to warm up the body."
+    },
+    {
+      "name": "Hip Opening Sequence",
+      "description": "A series of poses to release tension in the hips."
+    }
+  ],
+  "yoga_flow_poses": {
+    "Sun Salutation A": [
+      "Mountain Pose",
+      "Upward-Facing Dog",
+      "Plank Pose",
+      "Downward-Facing Dog"
+    ],
+    "Hip Opening Sequence": [
+      "Pigeon Pose",
+      "Happy Baby Pose",
+      "Bound Angle Pose"
+    ]
+  }
+}
