@@ -53,7 +53,7 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   **Project Setup (User Story 1.1):** Initialize Flutter project, add dependencies, set up Firebase.
     *   **Continuous Integration (User Story 1.2):** Set up GitHub Actions to test pull requests against the `rc` branch.
     *   **Continuous Deployment (User Story 1.3):** Set up GitHub Actions to deploy the `rc` branch to a staging environment.
-    *   **Data Models (User Story 3.1):** Create Freezed data classes for `Pose`, `Flow`, and `Session`.
+    *   **Data Models (User Story 3.1):** Create Freezed data classes for `YogaPose`, `YogaFlow`, and `YogaSession`.
     *   **View Read-Only Library (User Story 4.1):** Create Firestore collections, seed data, and build the UI to display the public library (`PublicHomeScreen`, `FeaturedPosesScreen`, etc.).
     *   **Admin Seeding:** Implement an `AdminScreen` with a function to seed the database from local JSON files.
 

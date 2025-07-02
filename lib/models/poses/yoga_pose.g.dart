@@ -12,12 +12,18 @@ _YogaPose _$YogaPoseFromJson(Map<String, dynamic> json) => _YogaPose(
   name: json['name'] as String,
   description: json['description'] as String,
   sanskritName: json['sanskritName'] as String?,
-  category: json['category'] as String?,
-  difficulty: json['difficulty'] as String?,
-  imageUrl: json['imageUrl'] as String?,
-  videoUrl: json['videoUrl'] as String?,
+  strengthDifficulty: (json['strengthDifficulty'] as num?)?.toInt() ?? 1,
+  flexibilityDifficulty: (json['flexibilityDifficulty'] as num?)?.toInt() ?? 1,
+  balanceDifficulty: (json['balanceDifficulty'] as num?)?.toInt() ?? 1,
+  labels:
+      (json['labels'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
+  duration: const DurationConverter().fromJson(
+    (json['duration'] as num).toInt(),
+  ),
   creatorUserId: json['creatorUserId'] as String? ?? '-1',
   isPublished: json['isPublished'] as bool? ?? false,
+  inSync: json['inSync'] as bool? ?? true,
 );
 
 Map<String, dynamic> _$YogaPoseToJson(_YogaPose instance) => <String, dynamic>{
@@ -26,10 +32,12 @@ Map<String, dynamic> _$YogaPoseToJson(_YogaPose instance) => <String, dynamic>{
   'name': instance.name,
   'description': instance.description,
   'sanskritName': instance.sanskritName,
-  'category': instance.category,
-  'difficulty': instance.difficulty,
-  'imageUrl': instance.imageUrl,
-  'videoUrl': instance.videoUrl,
+  'strengthDifficulty': instance.strengthDifficulty,
+  'flexibilityDifficulty': instance.flexibilityDifficulty,
+  'balanceDifficulty': instance.balanceDifficulty,
+  'labels': instance.labels,
+  'duration': const DurationConverter().toJson(instance.duration),
   'creatorUserId': instance.creatorUserId,
   'isPublished': instance.isPublished,
+  'inSync': instance.inSync,
 };

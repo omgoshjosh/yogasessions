@@ -6,28 +6,47 @@ part of 'yoga_session_pose.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_YogaSessionPose _$YogaSessionPoseFromJson(Map<String, dynamic> json) =>
-    _YogaSessionPose(
-      id: json['id'] as String,
-      originalYogaPoseId: json['originalYogaPoseId'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      sanskritName: json['sanskritName'] as String?,
-      imageUrl: json['imageUrl'] as String?,
-      durationInSeconds: (json['durationInSeconds'] as num).toInt(),
-      sessionOrderIndex: (json['sessionOrderIndex'] as num).toInt(),
-      isCustomSnapshot: json['isCustomSnapshot'] as bool? ?? false,
-    );
+_YogaSessionPose _$YogaSessionPoseFromJson(
+  Map<String, dynamic> json,
+) => _YogaSessionPose(
+  id: json['id'] as String,
+  poseId: json['poseId'] as String,
+  sessionId: json['sessionId'] as String,
+  orderIndex: (json['orderIndex'] as num).toInt(),
+  inSync: json['inSync'] as bool? ?? true,
+  originalId: json['originalId'] as String?,
+  name: json['name'] as String,
+  description: json['description'] as String,
+  sanskritName: json['sanskritName'] as String?,
+  strengthDifficulty: (json['strengthDifficulty'] as num?)?.toInt() ?? 1,
+  flexibilityDifficulty: (json['flexibilityDifficulty'] as num?)?.toInt() ?? 1,
+  balanceDifficulty: (json['balanceDifficulty'] as num?)?.toInt() ?? 1,
+  labels:
+      (json['labels'] as List<dynamic>?)?.map((e) => e as String).toList() ??
+      const [],
+  duration: const DurationConverter().fromJson(
+    (json['duration'] as num).toInt(),
+  ),
+  creatorUserId: json['creatorUserId'] as String? ?? '-1',
+  isPublished: json['isPublished'] as bool? ?? false,
+);
 
 Map<String, dynamic> _$YogaSessionPoseToJson(_YogaSessionPose instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'originalYogaPoseId': instance.originalYogaPoseId,
+      'poseId': instance.poseId,
+      'sessionId': instance.sessionId,
+      'orderIndex': instance.orderIndex,
+      'inSync': instance.inSync,
+      'originalId': instance.originalId,
       'name': instance.name,
       'description': instance.description,
       'sanskritName': instance.sanskritName,
-      'imageUrl': instance.imageUrl,
-      'durationInSeconds': instance.durationInSeconds,
-      'sessionOrderIndex': instance.sessionOrderIndex,
-      'isCustomSnapshot': instance.isCustomSnapshot,
+      'strengthDifficulty': instance.strengthDifficulty,
+      'flexibilityDifficulty': instance.flexibilityDifficulty,
+      'balanceDifficulty': instance.balanceDifficulty,
+      'labels': instance.labels,
+      'duration': const DurationConverter().toJson(instance.duration),
+      'creatorUserId': instance.creatorUserId,
+      'isPublished': instance.isPublished,
     };

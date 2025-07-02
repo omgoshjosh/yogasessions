@@ -16,13 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaSessionPose {
 
- String get id; String get originalYogaPoseId;// Foreign key to the library YogaPose.id
- String get name;// Can be customized for this session instance
- String get description;// Can be customized for this session instance
- String? get sanskritName;// Can be customized for this session instance
- String? get imageUrl;// Can be customized for this session instance
- int get durationInSeconds; int get sessionOrderIndex;// Order among all components in a YogaSession
- bool get isCustomSnapshot;
+ String get id; String get poseId; String get sessionId; int get orderIndex; bool get inSync;// Mirrored properties from YogaPose
+ String? get originalId; String get name; String get description; String? get sanskritName; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels;@DurationConverter() Duration get duration; String get creatorUserId; bool get isPublished;
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -35,16 +30,16 @@ $YogaSessionPoseCopyWith<YogaSessionPose> get copyWith => _$YogaSessionPoseCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is YogaSessionPose&&(identical(other.id, id) || other.id == id)&&(identical(other.originalYogaPoseId, originalYogaPoseId) || other.originalYogaPoseId == originalYogaPoseId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.sanskritName, sanskritName) || other.sanskritName == sanskritName)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.durationInSeconds, durationInSeconds) || other.durationInSeconds == durationInSeconds)&&(identical(other.sessionOrderIndex, sessionOrderIndex) || other.sessionOrderIndex == sessionOrderIndex)&&(identical(other.isCustomSnapshot, isCustomSnapshot) || other.isCustomSnapshot == isCustomSnapshot));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is YogaSessionPose&&(identical(other.id, id) || other.id == id)&&(identical(other.poseId, poseId) || other.poseId == poseId)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.orderIndex, orderIndex) || other.orderIndex == orderIndex)&&(identical(other.inSync, inSync) || other.inSync == inSync)&&(identical(other.originalId, originalId) || other.originalId == originalId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.sanskritName, sanskritName) || other.sanskritName == sanskritName)&&(identical(other.strengthDifficulty, strengthDifficulty) || other.strengthDifficulty == strengthDifficulty)&&(identical(other.flexibilityDifficulty, flexibilityDifficulty) || other.flexibilityDifficulty == flexibilityDifficulty)&&(identical(other.balanceDifficulty, balanceDifficulty) || other.balanceDifficulty == balanceDifficulty)&&const DeepCollectionEquality().equals(other.labels, labels)&&(identical(other.duration, duration) || other.duration == duration)&&(identical(other.creatorUserId, creatorUserId) || other.creatorUserId == creatorUserId)&&(identical(other.isPublished, isPublished) || other.isPublished == isPublished));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,originalYogaPoseId,name,description,sanskritName,imageUrl,durationInSeconds,sessionOrderIndex,isCustomSnapshot);
+int get hashCode => Object.hash(runtimeType,id,poseId,sessionId,orderIndex,inSync,originalId,name,description,sanskritName,strengthDifficulty,flexibilityDifficulty,balanceDifficulty,const DeepCollectionEquality().hash(labels),duration,creatorUserId,isPublished);
 
 @override
 String toString() {
-  return 'YogaSessionPose(id: $id, originalYogaPoseId: $originalYogaPoseId, name: $name, description: $description, sanskritName: $sanskritName, imageUrl: $imageUrl, durationInSeconds: $durationInSeconds, sessionOrderIndex: $sessionOrderIndex, isCustomSnapshot: $isCustomSnapshot)';
+  return 'YogaSessionPose(id: $id, poseId: $poseId, sessionId: $sessionId, orderIndex: $orderIndex, inSync: $inSync, originalId: $originalId, name: $name, description: $description, sanskritName: $sanskritName, strengthDifficulty: $strengthDifficulty, flexibilityDifficulty: $flexibilityDifficulty, balanceDifficulty: $balanceDifficulty, labels: $labels, duration: $duration, creatorUserId: $creatorUserId, isPublished: $isPublished)';
 }
 
 
@@ -55,7 +50,7 @@ abstract mixin class $YogaSessionPoseCopyWith<$Res>  {
   factory $YogaSessionPoseCopyWith(YogaSessionPose value, $Res Function(YogaSessionPose) _then) = _$YogaSessionPoseCopyWithImpl;
 @useResult
 $Res call({
- String id, String originalYogaPoseId, String name, String description, String? sanskritName, String? imageUrl, int durationInSeconds, int sessionOrderIndex, bool isCustomSnapshot
+ String id, String poseId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
 });
 
 
@@ -72,17 +67,24 @@ class _$YogaSessionPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? originalYogaPoseId = null,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? imageUrl = freezed,Object? durationInSeconds = null,Object? sessionOrderIndex = null,Object? isCustomSnapshot = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? poseId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalYogaPoseId: null == originalYogaPoseId ? _self.originalYogaPoseId : originalYogaPoseId // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
-as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
-as String?,durationInSeconds: null == durationInSeconds ? _self.durationInSeconds : durationInSeconds // ignore: cast_nullable_to_non_nullable
-as int,sessionOrderIndex: null == sessionOrderIndex ? _self.sessionOrderIndex : sessionOrderIndex // ignore: cast_nullable_to_non_nullable
-as int,isCustomSnapshot: null == isCustomSnapshot ? _self.isCustomSnapshot : isCustomSnapshot // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -93,25 +95,33 @@ as bool,
 /// @nodoc
 @JsonSerializable()
 
-class _YogaSessionPose extends YogaSessionPose {
-  const _YogaSessionPose({required this.id, required this.originalYogaPoseId, required this.name, required this.description, this.sanskritName, this.imageUrl, required this.durationInSeconds, required this.sessionOrderIndex, this.isCustomSnapshot = false}): super._();
+class _YogaSessionPose implements YogaSessionPose {
+  const _YogaSessionPose({required this.id, required this.poseId, required this.sessionId, required this.orderIndex, this.inSync = true, this.originalId, required this.name, required this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() required this.duration, this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
   factory _YogaSessionPose.fromJson(Map<String, dynamic> json) => _$YogaSessionPoseFromJson(json);
 
 @override final  String id;
-@override final  String originalYogaPoseId;
-// Foreign key to the library YogaPose.id
+@override final  String poseId;
+@override final  String sessionId;
+@override final  int orderIndex;
+@override@JsonKey() final  bool inSync;
+// Mirrored properties from YogaPose
+@override final  String? originalId;
 @override final  String name;
-// Can be customized for this session instance
 @override final  String description;
-// Can be customized for this session instance
 @override final  String? sanskritName;
-// Can be customized for this session instance
-@override final  String? imageUrl;
-// Can be customized for this session instance
-@override final  int durationInSeconds;
-@override final  int sessionOrderIndex;
-// Order among all components in a YogaSession
-@override@JsonKey() final  bool isCustomSnapshot;
+@override@JsonKey() final  int strengthDifficulty;
+@override@JsonKey() final  int flexibilityDifficulty;
+@override@JsonKey() final  int balanceDifficulty;
+ final  List<String> _labels;
+@override@JsonKey() List<String> get labels {
+  if (_labels is EqualUnmodifiableListView) return _labels;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_labels);
+}
+
+@override@DurationConverter() final  Duration duration;
+@override@JsonKey() final  String creatorUserId;
+@override@JsonKey() final  bool isPublished;
 
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
@@ -126,16 +136,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _YogaSessionPose&&(identical(other.id, id) || other.id == id)&&(identical(other.originalYogaPoseId, originalYogaPoseId) || other.originalYogaPoseId == originalYogaPoseId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.sanskritName, sanskritName) || other.sanskritName == sanskritName)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.durationInSeconds, durationInSeconds) || other.durationInSeconds == durationInSeconds)&&(identical(other.sessionOrderIndex, sessionOrderIndex) || other.sessionOrderIndex == sessionOrderIndex)&&(identical(other.isCustomSnapshot, isCustomSnapshot) || other.isCustomSnapshot == isCustomSnapshot));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _YogaSessionPose&&(identical(other.id, id) || other.id == id)&&(identical(other.poseId, poseId) || other.poseId == poseId)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.orderIndex, orderIndex) || other.orderIndex == orderIndex)&&(identical(other.inSync, inSync) || other.inSync == inSync)&&(identical(other.originalId, originalId) || other.originalId == originalId)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.sanskritName, sanskritName) || other.sanskritName == sanskritName)&&(identical(other.strengthDifficulty, strengthDifficulty) || other.strengthDifficulty == strengthDifficulty)&&(identical(other.flexibilityDifficulty, flexibilityDifficulty) || other.flexibilityDifficulty == flexibilityDifficulty)&&(identical(other.balanceDifficulty, balanceDifficulty) || other.balanceDifficulty == balanceDifficulty)&&const DeepCollectionEquality().equals(other._labels, _labels)&&(identical(other.duration, duration) || other.duration == duration)&&(identical(other.creatorUserId, creatorUserId) || other.creatorUserId == creatorUserId)&&(identical(other.isPublished, isPublished) || other.isPublished == isPublished));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,originalYogaPoseId,name,description,sanskritName,imageUrl,durationInSeconds,sessionOrderIndex,isCustomSnapshot);
+int get hashCode => Object.hash(runtimeType,id,poseId,sessionId,orderIndex,inSync,originalId,name,description,sanskritName,strengthDifficulty,flexibilityDifficulty,balanceDifficulty,const DeepCollectionEquality().hash(_labels),duration,creatorUserId,isPublished);
 
 @override
 String toString() {
-  return 'YogaSessionPose(id: $id, originalYogaPoseId: $originalYogaPoseId, name: $name, description: $description, sanskritName: $sanskritName, imageUrl: $imageUrl, durationInSeconds: $durationInSeconds, sessionOrderIndex: $sessionOrderIndex, isCustomSnapshot: $isCustomSnapshot)';
+  return 'YogaSessionPose(id: $id, poseId: $poseId, sessionId: $sessionId, orderIndex: $orderIndex, inSync: $inSync, originalId: $originalId, name: $name, description: $description, sanskritName: $sanskritName, strengthDifficulty: $strengthDifficulty, flexibilityDifficulty: $flexibilityDifficulty, balanceDifficulty: $balanceDifficulty, labels: $labels, duration: $duration, creatorUserId: $creatorUserId, isPublished: $isPublished)';
 }
 
 
@@ -146,7 +156,7 @@ abstract mixin class _$YogaSessionPoseCopyWith<$Res> implements $YogaSessionPose
   factory _$YogaSessionPoseCopyWith(_YogaSessionPose value, $Res Function(_YogaSessionPose) _then) = __$YogaSessionPoseCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String originalYogaPoseId, String name, String description, String? sanskritName, String? imageUrl, int durationInSeconds, int sessionOrderIndex, bool isCustomSnapshot
+ String id, String poseId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
 });
 
 
@@ -163,17 +173,24 @@ class __$YogaSessionPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? originalYogaPoseId = null,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? imageUrl = freezed,Object? durationInSeconds = null,Object? sessionOrderIndex = null,Object? isCustomSnapshot = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? poseId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_YogaSessionPose(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalYogaPoseId: null == originalYogaPoseId ? _self.originalYogaPoseId : originalYogaPoseId // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
-as String?,imageUrl: freezed == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
-as String?,durationInSeconds: null == durationInSeconds ? _self.durationInSeconds : durationInSeconds // ignore: cast_nullable_to_non_nullable
-as int,sessionOrderIndex: null == sessionOrderIndex ? _self.sessionOrderIndex : sessionOrderIndex // ignore: cast_nullable_to_non_nullable
-as int,isCustomSnapshot: null == isCustomSnapshot ? _self.isCustomSnapshot : isCustomSnapshot // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
