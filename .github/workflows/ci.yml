@@ -2,34 +2,77 @@ name: Flutter CI
 
 on:
   pull_request:
-    branches: [ main, rc ]
+    branches: [ main ]
 
 jobs:
-  test:
+  # Job for Web
+  test_web:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          flutter-version-file: pubspec.yaml # path to pubspec.yaml
-          cache: true
+      - run: flutter pub get
+      - run: flutter analyze
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      - name: Start Firebase Emulator
+        run: firebase emulators:start &
+      - name: Run Integration Tests on Web
+        run: |
+          chromedriver --port=4444 &
+          flutter drive \
+            --driver=test_driver/integration_driver.dart \
+            --target=integration_test/app_test.dart \
+            -d web-server \
+            --web-port 8080
 
-      - name: Install dependencies
-        run: flutter pub get
+  # Job for Android
+  test_android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter analyze
 
-      - name: Run Android integration tests
+      - name: AVD cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/build-cache
+          key: avd-cache-29-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      - name: Start Firebase Emulator
+        run: firebase emulators:start &
+      - name: Run Integration Tests on Android
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 29
+          avd-name: test_avd
+          disable-animations: false
+          snapshot-save-on-exit: true
           script: flutter test integration_test/app_test.dart
+
+  # Job for iOS
+#  test_ios:
+#    runs-on: macos-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#      - uses: subosito/flutter-action@v2
+#        with:
+#          channel: 'stable'
+#      - run: flutter pub get
+#      - run: flutter analyze
+#      - name: Install Firebase CLI
+#        run: npm install -g firebase-tools
+#      - name: Start Firebase Emulator
+#        run: firebase emulators:start &
+#      - name: Run Integration Tests on iOS
+#        run: flutter test integration_test
