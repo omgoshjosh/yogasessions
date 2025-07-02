@@ -16,7 +16,7 @@ jobs:
       - run: flutter analyze
   # Job for Web
   test_web:
-    depends-on: run_analyze
+    needs: run_analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
 
   # Job for Android
   test_android:
-    depends-on: test_web
+    needs: test_web
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
