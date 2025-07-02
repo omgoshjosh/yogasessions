@@ -1,26 +1,33 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/duration_converter.dart';
 
 part 'yoga_pose.freezed.dart';
 part 'yoga_pose.g.dart';
 
 @freezed
 abstract class YogaPose with _$YogaPose {
-  // Added private empty constructor
   const YogaPose._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory YogaPose({
     required String id,
-    String? originalId, // ID of the pose this was copied from, if any
+    String? originalId,
     required String name,
     required String description,
     String? sanskritName,
-    String? category,
-    String? difficulty,
-    String? imageUrl,
-    String? videoUrl,
-    @Default('-1') String creatorUserId, // -1 for system/seed, user ID otherwise
-    @Default(false) bool isPublished,   // True if visible in a public/featured library
+    @Default(1) int strengthDifficulty,
+    @Default(1) int flexibilityDifficulty,
+    @Default(1) int balanceDifficulty,
+    @Default([]) List<String> labels,
+    @DurationConverter() required Duration duration,
+    @Default('-1') String creatorUserId,
+    @Default(false) bool isPublished,
+    @Default(true) bool inSync,
   }) = _YogaPose;
 
   factory YogaPose.fromJson(Map<String, dynamic> json) => _$YogaPoseFromJson(json);
+
+  double get overallDifficulty {
+    return (strengthDifficulty + flexibilityDifficulty + balanceDifficulty) / 3.0;
+  }
 }

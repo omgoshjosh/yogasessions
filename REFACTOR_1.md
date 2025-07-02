@@ -1,6 +1,6 @@
-# Refactoring Plan: Data Models (User Story 3.1)
+# Refactoring Plan: Data Models (User Story 3.1) - V2 (Composition)
 
-This document outlines the plan to refactor the data models to align with the specifications in `README.md` and `PLAN.md`. The existing models are outdated and incomplete. This plan addresses those discrepancies by updating existing models, creating missing ones, and removing legacy code.
+This document outlines the plan to refactor the data models to align with the specifications in `README.md` and `PLAN.md`. This version of the plan incorporates a significant architectural improvement: using **composition** for linking models instead of duplicating fields. This will reduce code duplication, simplify maintenance, and create a clearer domain model.
 
 ## 1. Create `DurationConverter`
 
@@ -68,7 +68,8 @@ abstract class YogaPose with _$YogaPose {
 
 **File:** `lib/models/flows/yoga_flow.dart`
 ```dart
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package.freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/flows/yoga_flow_pose.dart';
 
 part 'yoga_flow.freezed.dart';
 part 'yoga_flow.g.dart';
@@ -87,6 +88,7 @@ abstract class YogaFlow with _$YogaFlow {
     @Default(1) int flexibilityDifficulty,
     @Default(1) int balanceDifficulty,
     @Default([]) List<String> labels,
+    @Default([]) List<YogaFlowPose> poses,
     @Default('-1') String creatorUserId,
     @Default(false) bool isPublished,
     @Default(true) bool inSync,
@@ -106,6 +108,8 @@ abstract class YogaFlow with _$YogaFlow {
 **File:** `lib/models/sessions/yoga_session.dart`
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/sessions/yoga_session_flow.dart';
+import 'package:yogasessions/models/sessions/yoga_session_pose.dart';
 
 part 'yoga_session.freezed.dart';
 part 'yoga_session.g.dart';
@@ -124,6 +128,8 @@ abstract class YogaSession with _$YogaSession {
     @Default(1) int flexibilityDifficulty,
     @Default(1) int balanceDifficulty,
     @Default([]) List<String> labels,
+    @Default([]) List<YogaSessionPose> poses,
+    @Default([]) List<YogaSessionFlow> flows,
     @Default('-1') String creatorUserId,
     @Default(false) bool isPublished,
     @Default(true) bool inSync,
@@ -137,40 +143,31 @@ abstract class YogaSession with _$YogaSession {
 }
 ```
 
-## 5. Update Linking Models
+## 5. Refactor Linking Models to use Composition
 
-**Why:** The `README.md` specifies that relationships between primary models are managed by linking entities. The existing linking models must be updated to hold foreign keys (e.g., `poseId`, `flowId`) and mirrored properties from the original object, which is crucial for features like 'inSync' tracking.
+**Why:** The previous approach duplicated all the fields from the original object (`YogaPose` or `YogaFlow`) into the linking model. This creates significant code duplication and maintenance overhead. The better approach is **composition**: the linking model holds a reference to the full object itself. This eliminates duplication and creates a more accurate data model, though it does result in nested JSON.
 
 ### `YogaFlowPose`
 **File:** `lib/models/flows/yoga_flow_pose.dart`
 ```dart
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yogasessions/models/duration_converter.dart';
+import 'package.freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/poses/yoga_pose.dart';
 
 part 'yoga_flow_pose.freezed.dart';
 part 'yoga_flow_pose.g.dart';
 
 @freezed
 abstract class YogaFlowPose with _$YogaFlowPose {
+  @JsonSerializable(explicitToJson: true)
   const factory YogaFlowPose({
     required String id,
-    required String poseId,
     required String flowId,
-    String? sessionId,
     required int orderIndex,
     @Default(true) bool inSync,
-    // Mirrored properties from YogaPose
-    String? originalId,
-    required String name,
-    required String description,
-    String? sanskritName,
-    @Default(1) int strengthDifficulty,
-    @Default(1) int flexibilityDifficulty,
-    @Default(1) int balanceDifficulty,
-    @Default([]) List<String> labels,
-    @DurationConverter() required Duration duration,
-    @Default('-1') String creatorUserId,
-    @Default(false) bool isPublished,
+    
+    // Composition: Hold the actual YogaPose object
+    required YogaPose pose,
+
   }) = _YogaFlowPose;
 
   factory YogaFlowPose.fromJson(Map<String, dynamic> json) => _$YogaFlowPoseFromJson(json);
@@ -180,32 +177,24 @@ abstract class YogaFlowPose with _$YogaFlowPose {
 ### `YogaSessionPose`
 **File:** `lib/models/sessions/yoga_session_pose.dart`
 ```dart
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yogasessions/models/duration_converter.dart';
+import 'package.freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/poses/yoga_pose.dart';
 
 part 'yoga_session_pose.freezed.dart';
 part 'yoga_session_pose.g.dart';
 
 @freezed
 abstract class YogaSessionPose with _$YogaSessionPose {
+  @JsonSerializable(explicitToJson: true)
   const factory YogaSessionPose({
     required String id,
-    required String poseId,
     required String sessionId,
     required int orderIndex,
     @Default(true) bool inSync,
-    // Mirrored properties from YogaPose
-    String? originalId,
-    required String name,
-    required String description,
-    String? sanskritName,
-    @Default(1) int strengthDifficulty,
-    @Default(1) int flexibilityDifficulty,
-    @Default(1) int balanceDifficulty,
-    @Default([]) List<String> labels,
-    @DurationConverter() required Duration duration,
-    @Default('-1') String creatorUserId,
-    @Default(false) bool isPublished,
+
+    // Composition: Hold the actual YogaPose object
+    required YogaPose pose,
+
   }) = _YogaSessionPose;
 
   factory YogaSessionPose.fromJson(Map<String, dynamic> json) => _$YogaSessionPoseFromJson(json);
@@ -216,28 +205,23 @@ abstract class YogaSessionPose with _$YogaSessionPose {
 **File:** `lib/models/sessions/yoga_session_flow.dart`
 ```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/models/flows/yoga_flow.dart';
 
 part 'yoga_session_flow.freezed.dart';
 part 'yoga_session_flow.g.dart';
 
 @freezed
 abstract class YogaSessionFlow with _$YogaSessionFlow {
+  @JsonSerializable(explicitToJson: true)
   const factory YogaSessionFlow({
     required String id,
-    required String flowId,
     required String sessionId,
     required int orderIndex,
     @Default(true) bool inSync,
-    // Mirrored properties from YogaFlow
-    String? originalId,
-    required String name,
-    required String description,
-    @Default(1) int strengthDifficulty,
-    @Default(1) int flexibilityDifficulty,
-    @Default(1) int balanceDifficulty,
-    @Default([]) List<String> labels,
-    @Default('-1') String creatorUserId,
-    @Default(false) bool isPublished,
+
+    // Composition: Hold the actual YogaFlow object
+    required YogaFlow flow,
+
   }) = _YogaSessionFlow;
 
   factory YogaSessionFlow.fromJson(Map<String, dynamic> json) => _$YogaSessionFlowFromJson(json);
@@ -250,7 +234,7 @@ abstract class YogaSessionFlow with _$YogaSessionFlow {
 
 **File:** `lib/models/user.dart`
 ```dart
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package.freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

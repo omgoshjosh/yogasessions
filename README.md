@@ -157,6 +157,10 @@
             - session_pose creation behaves like flow_pose creation
             - session_pose linked pose out of sync behavior behaves like flow_pose linked pose out of sync behavior
 
+### **Future Enhancements**
+
+*   **Progress Tracking:** To improve user engagement and provide value, a future version of the app should include a tracking component. This would allow users to monitor their progress over time, view session completion history, and visualize trends in workout difficulty and frequency. This aligns with popular features in modern health, wellness, and exercise applications.
+
 ### **Admin functionality**
 - admin accounts create, update, and delete poses, flows, and sessions in the prebuilt readonly library.
 - admin accounts may impersonate any permanent user account.
