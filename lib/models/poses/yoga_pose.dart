@@ -5,10 +5,10 @@ part 'yoga_pose.freezed.dart';
 part 'yoga_pose.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class YogaPose with _$YogaPose {
   const YogaPose._();
 
-  @JsonSerializable(explicitToJson: true)
   const factory YogaPose({
     required String id,
     String? originalId,

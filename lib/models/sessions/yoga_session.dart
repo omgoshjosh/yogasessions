@@ -4,10 +4,10 @@ part 'yoga_session.freezed.dart';
 part 'yoga_session.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class YogaSession with _$YogaSession {
   const YogaSession._();
 
-  @JsonSerializable(explicitToJson: true)
   const factory YogaSession({
     required String id,
     String? originalId,
