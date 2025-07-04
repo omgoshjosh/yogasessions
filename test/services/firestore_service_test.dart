@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:yogasessions/models/poses/yoga_pose.dart';
-import 'package:yogasessions/services/firestore_service.dart';
+// import 'package:yogasessions/models/poses/yoga_pose.dart';
+// import 'package:yogasessions/services/firestore_service.dart';
 
 void main() {
   group('FirestoreService', () {
     // late FakeFirebaseFirestore fakeFirestore;
-    late FirestoreService firestoreService;
+    // late FirestoreService firestoreService;
 
     setUp(() {
       // fakeFirestore = FakeFirebaseFirestore();

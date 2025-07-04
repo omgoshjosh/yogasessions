@@ -54,12 +54,12 @@ void main() {
 
       // B. Verify a specific Auth user exists.
       try {
-        final userCredential = await auth.signInWithEmailAndPassword(email: "senterright@gmail.com", password: "password123");
-        expect(userCredential.user, isNotNull, reason: "Admin user should exist in Auth after seeding");
-        expect(userCredential.user!.displayName, "Admin User", reason: "Admin user's display name should be set");
+        final userCredential = await auth.signInWithEmailAndPassword(email: 'senterright@gmail.com', password: 'password123');
+        expect(userCredential.user, isNotNull, reason: 'Admin user should exist in Auth after seeding');
+        expect(userCredential.user!.displayName, 'Admin User', reason: "Admin user's display name should be set");
         await auth.signOut(); // Clean up session
       } on FirebaseAuthException catch(e) {
-        fail("Failed to sign in admin user. This indicates a problem with user seeding. Error: ${e.code}");
+        fail('Failed to sign in admin user. This indicates a problem with user seeding. Error: ${e.code}');
       }
       
       // C. Verify sub-collections for a specific seeded flow.

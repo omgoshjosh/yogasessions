@@ -16,7 +16,7 @@ This document outlines the steps to complete User Story 1.3: "Use seed data to i
 - [x] **Create a Seeding Validation Test**: Create `integration_test/seeding_test.dart` to call `clearData()`, then `seedData()`, and assert that all collections and sub-collections are populated correctly.
 - [x] **Update Documentation**: Update `README.md` and `PLAN.md` to describe the process of adding new integration tests to a central entry file.
 - [x] **Create Central Test Entry Point**: Create a new file, `integration_test/app_test.dart`, to serve as the single entry point for all integration tests.
-- [ ] **Consolidate Existing Tests**:
+- [x] **Consolidate Existing Tests**:
     - [x] ~~Import `integration_test/anonymous_user_flow_test.dart` into `app_test.dart`.~~ (FUTURE WORK)
     - [x] ~~Import `integration_test/admin_user_flow_test.dart` into `app_test.dart`.~~ (FUTURE WORK)
     - [x] Import `integration_test/seeding_test.dart` into `app_test.dart`.

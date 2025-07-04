@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaSessionPose {
 
- String get id; String get poseId; String get sessionId; int get orderIndex; bool get inSync;// Mirrored properties from YogaPose
- String? get originalId; String get name; String get description; String? get sanskritName; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels;@DurationConverter() Duration get duration; String get creatorUserId; bool get isPublished;
+ String? get id; String? get poseId; String? get sessionId; int? get orderIndex; bool get inSync;// Mirrored properties from YogaPose
+ String? get originalId; String? get name; String? get description; String? get sanskritName; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels;@DurationConverter() Duration? get duration; String get creatorUserId; bool get isPublished;
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -50,7 +50,7 @@ abstract mixin class $YogaSessionPoseCopyWith<$Res>  {
   factory $YogaSessionPoseCopyWith(YogaSessionPose value, $Res Function(YogaSessionPose) _then) = _$YogaSessionPoseCopyWithImpl;
 @useResult
 $Res call({
- String id, String poseId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
+ String? id, String? poseId, String? sessionId, int? orderIndex, bool inSync, String? originalId, String? name, String? description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration? duration, String creatorUserId, bool isPublished
 });
 
 
@@ -67,23 +67,23 @@ class _$YogaSessionPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? poseId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? poseId = freezed,Object? sessionId = freezed,Object? orderIndex = freezed,Object? inSync = null,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = freezed,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
-as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
-as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,poseId: freezed == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+as String?,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String?,orderIndex: freezed == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int?,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
 as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
 as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
 as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
 as int,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
-as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: freezed == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration?,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
 as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -96,18 +96,18 @@ as bool,
 @JsonSerializable()
 
 class _YogaSessionPose implements YogaSessionPose {
-  const _YogaSessionPose({required this.id, required this.poseId, required this.sessionId, required this.orderIndex, this.inSync = true, this.originalId, required this.name, required this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() required this.duration, this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
+  const _YogaSessionPose({this.id, this.poseId, this.sessionId, this.orderIndex, this.inSync = true, this.originalId, this.name, this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() this.duration, this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
   factory _YogaSessionPose.fromJson(Map<String, dynamic> json) => _$YogaSessionPoseFromJson(json);
 
-@override final  String id;
-@override final  String poseId;
-@override final  String sessionId;
-@override final  int orderIndex;
+@override final  String? id;
+@override final  String? poseId;
+@override final  String? sessionId;
+@override final  int? orderIndex;
 @override@JsonKey() final  bool inSync;
 // Mirrored properties from YogaPose
 @override final  String? originalId;
-@override final  String name;
-@override final  String description;
+@override final  String? name;
+@override final  String? description;
 @override final  String? sanskritName;
 @override@JsonKey() final  int strengthDifficulty;
 @override@JsonKey() final  int flexibilityDifficulty;
@@ -119,7 +119,7 @@ class _YogaSessionPose implements YogaSessionPose {
   return EqualUnmodifiableListView(_labels);
 }
 
-@override@DurationConverter() final  Duration duration;
+@override@DurationConverter() final  Duration? duration;
 @override@JsonKey() final  String creatorUserId;
 @override@JsonKey() final  bool isPublished;
 
@@ -156,7 +156,7 @@ abstract mixin class _$YogaSessionPoseCopyWith<$Res> implements $YogaSessionPose
   factory _$YogaSessionPoseCopyWith(_YogaSessionPose value, $Res Function(_YogaSessionPose) _then) = __$YogaSessionPoseCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String poseId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
+ String? id, String? poseId, String? sessionId, int? orderIndex, bool inSync, String? originalId, String? name, String? description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration? duration, String creatorUserId, bool isPublished
 });
 
 
@@ -173,23 +173,23 @@ class __$YogaSessionPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionPose
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? poseId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? poseId = freezed,Object? sessionId = freezed,Object? orderIndex = freezed,Object? inSync = null,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = freezed,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_YogaSessionPose(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
-as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
-as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,poseId: freezed == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+as String?,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String?,orderIndex: freezed == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int?,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
 as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
 as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
 as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
 as int,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
-as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: freezed == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration?,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
 as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

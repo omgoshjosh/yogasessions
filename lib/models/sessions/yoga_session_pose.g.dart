@@ -6,17 +6,23 @@ part of 'yoga_session_pose.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+YogaSessionPose _$YogaSessionPoseFromJson(Map<String, dynamic> json) =>
+    YogaSessionPose();
+
+Map<String, dynamic> _$YogaSessionPoseToJson(YogaSessionPose instance) =>
+    <String, dynamic>{};
+
 _YogaSessionPose _$YogaSessionPoseFromJson(
   Map<String, dynamic> json,
 ) => _YogaSessionPose(
-  id: json['id'] as String,
-  poseId: json['poseId'] as String,
-  sessionId: json['sessionId'] as String,
-  orderIndex: (json['orderIndex'] as num).toInt(),
+  id: json['id'] as String?,
+  poseId: json['poseId'] as String?,
+  sessionId: json['sessionId'] as String?,
+  orderIndex: (json['orderIndex'] as num?)?.toInt(),
   inSync: json['inSync'] as bool? ?? true,
   originalId: json['originalId'] as String?,
-  name: json['name'] as String,
-  description: json['description'] as String,
+  name: json['name'] as String?,
+  description: json['description'] as String?,
   sanskritName: json['sanskritName'] as String?,
   strengthDifficulty: (json['strengthDifficulty'] as num?)?.toInt() ?? 1,
   flexibilityDifficulty: (json['flexibilityDifficulty'] as num?)?.toInt() ?? 1,
@@ -24,8 +30,9 @@ _YogaSessionPose _$YogaSessionPoseFromJson(
   labels:
       (json['labels'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const [],
-  duration: const DurationConverter().fromJson(
-    (json['duration'] as num).toInt(),
+  duration: _$JsonConverterFromJson<int, Duration>(
+    json['duration'],
+    const DurationConverter().fromJson,
   ),
   creatorUserId: json['creatorUserId'] as String? ?? '-1',
   isPublished: json['isPublished'] as bool? ?? false,
@@ -46,7 +53,20 @@ Map<String, dynamic> _$YogaSessionPoseToJson(_YogaSessionPose instance) =>
       'flexibilityDifficulty': instance.flexibilityDifficulty,
       'balanceDifficulty': instance.balanceDifficulty,
       'labels': instance.labels,
-      'duration': const DurationConverter().toJson(instance.duration),
+      'duration': _$JsonConverterToJson<int, Duration>(
+        instance.duration,
+        const DurationConverter().toJson,
+      ),
       'creatorUserId': instance.creatorUserId,
       'isPublished': instance.isPublished,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) => json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) => value == null ? null : toJson(value);

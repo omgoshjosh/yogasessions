@@ -4,17 +4,18 @@ part 'yoga_session_flow.freezed.dart';
 part 'yoga_session_flow.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class YogaSessionFlow with _$YogaSessionFlow {
   const factory YogaSessionFlow({
-    required String id,
-    required String flowId,
-    required String sessionId,
-    required int orderIndex,
+    String? id,
+    String? flowId,
+    String? sessionId,
+    int? orderIndex,
     @Default(true) bool inSync,
     // Mirrored properties from YogaFlow
     String? originalId,
-    required String name,
-    required String description,
+    String? name,
+    String? description,
     @Default(1) int strengthDifficulty,
     @Default(1) int flexibilityDifficulty,
     @Default(1) int balanceDifficulty,

@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaSessionFlow {
 
- String get id; String get flowId; String get sessionId; int get orderIndex; bool get inSync;// Mirrored properties from YogaFlow
- String? get originalId; String get name; String get description; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels; String get creatorUserId; bool get isPublished;
+ String? get id; String? get flowId; String? get sessionId; int? get orderIndex; bool get inSync;// Mirrored properties from YogaFlow
+ String? get originalId; String? get name; String? get description; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels; String get creatorUserId; bool get isPublished;
 /// Create a copy of YogaSessionFlow
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -50,7 +50,7 @@ abstract mixin class $YogaSessionFlowCopyWith<$Res>  {
   factory $YogaSessionFlowCopyWith(YogaSessionFlow value, $Res Function(YogaSessionFlow) _then) = _$YogaSessionFlowCopyWithImpl;
 @useResult
 $Res call({
- String id, String flowId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished
+ String? id, String? flowId, String? sessionId, int? orderIndex, bool inSync, String? originalId, String? name, String? description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished
 });
 
 
@@ -67,17 +67,17 @@ class _$YogaSessionFlowCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionFlow
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? flowId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? flowId = freezed,Object? sessionId = freezed,Object? orderIndex = freezed,Object? inSync = null,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,flowId: null == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
-as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
-as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,flowId: freezed == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
+as String?,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String?,orderIndex: freezed == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int?,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
 as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
 as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
 as int,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
@@ -94,18 +94,18 @@ as bool,
 @JsonSerializable()
 
 class _YogaSessionFlow implements YogaSessionFlow {
-  const _YogaSessionFlow({required this.id, required this.flowId, required this.sessionId, required this.orderIndex, this.inSync = true, this.originalId, required this.name, required this.description, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
+  const _YogaSessionFlow({this.id, this.flowId, this.sessionId, this.orderIndex, this.inSync = true, this.originalId, this.name, this.description, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
   factory _YogaSessionFlow.fromJson(Map<String, dynamic> json) => _$YogaSessionFlowFromJson(json);
 
-@override final  String id;
-@override final  String flowId;
-@override final  String sessionId;
-@override final  int orderIndex;
+@override final  String? id;
+@override final  String? flowId;
+@override final  String? sessionId;
+@override final  int? orderIndex;
 @override@JsonKey() final  bool inSync;
 // Mirrored properties from YogaFlow
 @override final  String? originalId;
-@override final  String name;
-@override final  String description;
+@override final  String? name;
+@override final  String? description;
 @override@JsonKey() final  int strengthDifficulty;
 @override@JsonKey() final  int flexibilityDifficulty;
 @override@JsonKey() final  int balanceDifficulty;
@@ -152,7 +152,7 @@ abstract mixin class _$YogaSessionFlowCopyWith<$Res> implements $YogaSessionFlow
   factory _$YogaSessionFlowCopyWith(_YogaSessionFlow value, $Res Function(_YogaSessionFlow) _then) = __$YogaSessionFlowCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String flowId, String sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished
+ String? id, String? flowId, String? sessionId, int? orderIndex, bool inSync, String? originalId, String? name, String? description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished
 });
 
 
@@ -169,17 +169,17 @@ class __$YogaSessionFlowCopyWithImpl<$Res>
 
 /// Create a copy of YogaSessionFlow
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? flowId = null,Object? sessionId = null,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? flowId = freezed,Object? sessionId = freezed,Object? orderIndex = freezed,Object? inSync = null,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_YogaSessionFlow(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,flowId: null == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
-as String,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
-as int,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,flowId: freezed == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
+as String?,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+as String?,orderIndex: freezed == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
+as int?,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
 as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
 as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
 as int,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable

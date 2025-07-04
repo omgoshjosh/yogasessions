@@ -6,17 +6,23 @@ part of 'yoga_session_flow.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+YogaSessionFlow _$YogaSessionFlowFromJson(Map<String, dynamic> json) =>
+    YogaSessionFlow();
+
+Map<String, dynamic> _$YogaSessionFlowToJson(YogaSessionFlow instance) =>
+    <String, dynamic>{};
+
 _YogaSessionFlow _$YogaSessionFlowFromJson(
   Map<String, dynamic> json,
 ) => _YogaSessionFlow(
-  id: json['id'] as String,
-  flowId: json['flowId'] as String,
-  sessionId: json['sessionId'] as String,
-  orderIndex: (json['orderIndex'] as num).toInt(),
+  id: json['id'] as String?,
+  flowId: json['flowId'] as String?,
+  sessionId: json['sessionId'] as String?,
+  orderIndex: (json['orderIndex'] as num?)?.toInt(),
   inSync: json['inSync'] as bool? ?? true,
   originalId: json['originalId'] as String?,
-  name: json['name'] as String,
-  description: json['description'] as String,
+  name: json['name'] as String?,
+  description: json['description'] as String?,
   strengthDifficulty: (json['strengthDifficulty'] as num?)?.toInt() ?? 1,
   flexibilityDifficulty: (json['flexibilityDifficulty'] as num?)?.toInt() ?? 1,
   balanceDifficulty: (json['balanceDifficulty'] as num?)?.toInt() ?? 1,

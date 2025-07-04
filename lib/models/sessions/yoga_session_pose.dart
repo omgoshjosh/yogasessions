@@ -1,27 +1,28 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yogasessions/models/duration_converter.dart';
+import 'package:yogasessions/utils/duration_converter.dart';
 
 part 'yoga_session_pose.freezed.dart';
 part 'yoga_session_pose.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 abstract class YogaSessionPose with _$YogaSessionPose {
   const factory YogaSessionPose({
-    required String id,
-    required String poseId,
-    required String sessionId,
-    required int orderIndex,
+    String? id,
+    String? poseId,
+    String? sessionId,
+    int? orderIndex,
     @Default(true) bool inSync,
     // Mirrored properties from YogaPose
     String? originalId,
-    required String name,
-    required String description,
+    String? name,
+    String? description,
     String? sanskritName,
     @Default(1) int strengthDifficulty,
     @Default(1) int flexibilityDifficulty,
     @Default(1) int balanceDifficulty,
     @Default([]) List<String> labels,
-    @DurationConverter() required Duration duration,
+    @DurationConverter() Duration? duration,
     @Default('-1') String creatorUserId,
     @Default(false) bool isPublished,
   }) = _YogaSessionPose;

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:yogasessions/models/duration_converter.dart';
+import 'package:yogasessions/utils/duration_converter.dart';
 
 part 'yoga_pose.freezed.dart';
 part 'yoga_pose.g.dart';
