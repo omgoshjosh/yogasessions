@@ -6,12 +6,6 @@ part of 'yoga_flow_pose.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-YogaFlowPose _$YogaFlowPoseFromJson(Map<String, dynamic> json) =>
-    YogaFlowPose();
-
-Map<String, dynamic> _$YogaFlowPoseToJson(YogaFlowPose instance) =>
-    <String, dynamic>{};
-
 _YogaFlowPose _$YogaFlowPoseFromJson(
   Map<String, dynamic> json,
 ) => _YogaFlowPose(

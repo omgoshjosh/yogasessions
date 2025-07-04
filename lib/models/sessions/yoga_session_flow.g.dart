@@ -6,12 +6,6 @@ part of 'yoga_session_flow.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-YogaSessionFlow _$YogaSessionFlowFromJson(Map<String, dynamic> json) =>
-    YogaSessionFlow();
-
-Map<String, dynamic> _$YogaSessionFlowToJson(YogaSessionFlow instance) =>
-    <String, dynamic>{};
-
 _YogaSessionFlow _$YogaSessionFlowFromJson(
   Map<String, dynamic> json,
 ) => _YogaSessionFlow(

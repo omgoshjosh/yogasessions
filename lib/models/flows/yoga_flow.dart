@@ -4,7 +4,6 @@ part 'yoga_flow.freezed.dart';
 part 'yoga_flow.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true)
 abstract class YogaFlow with _$YogaFlow {
   const YogaFlow._();
 

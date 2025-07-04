@@ -22,6 +22,7 @@ This document outlines the steps to complete User Story 1.3: "Use seed data to i
     - [x] Import `integration_test/seeding_test.dart` into `app_test.dart`.
     - [x] Add calls to each imported test's `main()` method from within the `main()` method of `app_test.dart`.
 - [ ] **Fix build errors**: Dart analysis errors, unit and widget test errors, and integration test errors.
+  - [ ] **Refactor test_helpers and admin_screen**: Extract necessary methods to support screens/admin_screen.dart and the admin sync for user story 1.4
 - [ ] **Update CI Configuration (if necessary)**: Ensure the CI pipeline is configured to run only `integration_test/app_test.dart`.
 ### Relevant Files for Context
 

@@ -4,7 +4,6 @@ part 'yoga_session_flow.freezed.dart';
 part 'yoga_session_flow.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true)
 abstract class YogaSessionFlow with _$YogaSessionFlow {
   const factory YogaSessionFlow({
     String? id,
