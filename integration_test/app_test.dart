@@ -25,10 +25,10 @@ void main() {
 
     try {
       // After initialization, the app should navigate to the PublicHomeScreen,
-      // which should contain the text "Featured Poses".
+      // which should contain the text "Featured Sessions".
       // Let's find a widget that is more likely to be a title.
       expect(
-        find.widgetWithText(AppBar, 'Featured Poses'),
+        find.widgetWithText(AppBar, 'Featured Sessions'),
         findsOneWidget,
       );
     } catch (e) {

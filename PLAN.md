@@ -46,16 +46,16 @@ To ensure quality and a steady development pace, the following criteria must be 
 
 *   **User Stories:**
     *   "As a new user, I want to open the app and immediately see a list of featured yoga sessions I can explore."
-    *   "As a new user, I want to browse all available yoga poses and see their details (including images/videos) without creating an account."
+    *   "As a new user, I want to browse all Featured yoga poses, flows, and sessions and see their details (including images/videos) without creating an account."
     *   "As a developer, I want to set up the project, CI/CD, and data models to support the core application."
 
 *   **Key Tasks & Associated Sprint Stories:**
-    *   **Project Setup (User Story 1.1):** Initialize Flutter project, add dependencies, set up Firebase.
-    *   **Continuous Integration (User Story 1.2):** Set up GitHub Actions to test pull requests against the `rc` branch.
-    *   **Continuous Deployment (User Story 1.3):** Set up GitHub Actions to deploy the `rc` branch to a staging environment.
-    *   **Data Models (User Story 3.1):** Create Freezed data classes for `YogaPose`, `YogaFlow`, and `YogaSession`.
-    *   **View Read-Only Library (User Story 4.1):** Create Firestore collections, seed data, and build the UI to display the public library (`PublicHomeScreen`, `FeaturedPosesScreen`, etc.).
-    *   **Admin Seeding:** Implement an `AdminScreen` with a function to seed the database from local JSON files.
+    - [x]   **Project Setup (User Story 1.1):** Initialize Flutter project, add dependencies, set up Firebase.
+    - [x]   **Continuous Integration (User Story 1.2):** Set up GitHub Actions to test pull requests against the `rc` branch.
+    - [ ]   **Continuous Deployment (User Story 1.3):** Set up GitHub Actions to deploy the `rc` branch to a staging environment.
+    - [ ]   **Data Models (User Story 3.1):** Create Freezed data classes for `YogaPose`, `YogaFlow`, and `YogaSession`.
+    - [ ]   **View Read-Only Library (User Story 4.1):** Create Firestore collections, seed data, and build the UI to display the public library (`PublicHomeScreen`, `FeaturedPosesScreen`, etc.).
+    - [ ]   **Admin Seeding:** Implement an `AdminScreen` with a function to seed the database from local JSON files.
 
 ### Milestone 2: Authentication (v0.2)
 
@@ -67,9 +67,9 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   "As a user, I want to be able to use the app anonymously and later convert my account to a permanent one so that I don't have to create an account right away."
 
 *   **Key Tasks & Associated Sprint Stories:**
-    *   **Anonymous & Permanent User Accounts (User Story 2.1):** Implement Firebase anonymous auth, build the UI for `LoginScreen`, `SignupScreen`, and the account conversion flow.
-    *   Add conditional UI elements (e.g., "Save Session" button) that appear only for authenticated users.
-    *   Write integration tests for signup, login, and logout flows.
+    - [ ] **Anonymous & Permanent User Accounts (User Story 2.1):** Implement Firebase anonymous auth, build the UI for `LoginScreen`, `SignupScreen`, and the account conversion flow.
+    - [ ] Add conditional UI elements (e.g., "Save Session" button) that appear only for authenticated users.
+    - [ ] Write integration tests for signup, login, and logout flows.
 
 ### Milestone 3: User Library & Content Management (v0.3)
 
@@ -81,10 +81,10 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   "As a logged-in user, I want to upload an image for a custom pose I create."
 
 *   **Key Tasks & Associated Sprint Stories:**
-    *   **Favorites (User Story 5.1):** Implement the `favorites` collection and UI for saving/viewing favorite items.
-    *   **Custom Content:** Build the UI/backend for `SessionBuilderScreen`, `FlowBuilderScreen`, and `PoseBuilderScreen`.
-    *   **Media Uploads:** Add functionality for users to upload their own media for custom content.
-    *   **Play a Session (User Story 4.2):** Create a "player" screen to play flows/sessions with standard media controls.
+    - [ ] **Favorites (User Story 5.1):** Implement the `favorites` collection and UI for saving/viewing favorite items.
+    - [ ] **Custom Content:** Build the UI/backend for `SessionBuilderScreen`, `FlowBuilderScreen`, and `PoseBuilderScreen`.
+    - [ ] **Media Uploads:** Add functionality for users to upload their own media for custom content.
+    - [ ] **Play a Session (User Story 4.2):** Create a "player" screen to play flows/sessions with standard media controls.
 
 ### Milestone 4: Profile & Settings (v0.4)
 
@@ -95,19 +95,19 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   "As a user, I want to be able to log out from the profile screen."
 
 *   **Key Tasks:**
-    *   Build the `ProfileScreen` and `SettingsScreen`.
-    *   Write integration tests for viewing the profile and managing settings.
+    - [ ] Build the `ProfileScreen` and `SettingsScreen`.
+    - [ ] Write integration tests for viewing the profile and managing settings.
 
 ### Milestone 5: V1 Release
 
 **Goal:** Finalize the application for a public V1 release.
 
 *   **Key Tasks:**
-    *   **Final Polish:** A full pass on UI/UX, adding loading indicators, animations, and graceful error handling.
-    *   **Regression Testing:** Ensure all features from previous milestones work together seamlessly.
-    *   **Deployment Prep:** Finalize store listings, marketing materials, etc.
-    *   **Android App Store Release:** Create a pipeline that builds, signs, and uploads a release-ready Android App Bundle (`.aab`) to the Google Play Store.
-    *   **Launch:** Merge the final `rc` branch to `main` for the official V1.0.0 release.
+    - [ ] **Final Polish:** A full pass on UI/UX, adding loading indicators, animations, and graceful error handling.
+    - [ ] **Regression Testing:** Ensure all features from previous milestones work together seamlessly.
+    - [ ] **Deployment Prep:** Finalize store listings, marketing materials, etc.
+    - [ ] **Android App Store Release:** Create a pipeline that builds, signs, and uploads a release-ready Android App Bundle (`.aab`) to the Google Play Store.
+    - [ ] **Launch:** Merge the final `rc` branch to `main` for the official V1.0.0 release.
 
 ### Subsequent Sprints (Future Work)
 
