@@ -189,7 +189,11 @@ This project is being developed in phases. Here is a summary of the major milest
 TODO: determine which assets are required
 
 ### **Development Process**
-- **Test-Driven Development (TDD):** Each user story will be validated by a comprehensive suite of tests. No user story is considered complete until all associated tests are passing.q
+- **Test-Driven Development (TDD):** Each user story will be validated by a comprehensive suite of tests. No user story is considered complete until all associated tests are passing.
 - **Continuous Integration:** All pull requests targeting the `main` branch will be automatically validated by a GitHub Actions workflow that runs linter checks and a full suite of integration tests against a live Firebase Emulator.
 - **Continuous Deployment:** When a pull request is merged into the `main` branch, the application will be automatically deployed to production.
 - **Sprint-Based Delivery:** The project will be developed in sprints. At the end of each sprint, the completed and tested features will be deployed. No new sprint will begin until the previous sprint's work is deployed.
+- **Running Integration Tests**: All integration tests are managed and run from a single entry point: `integration_test/app_test.dart`. This allows the CI system to discover and execute all test suites by running a single command. To add a new test suite:
+    1.  Create your new test file (e.g., `integration_test/new_feature_test.dart`).
+    2.  Import your new test file into `integration_test/app_test.dart` and give it a prefix (e.g., `import 'new_feature_test.dart' as new_feature;`).
+    3.  Add a call to your new test's `main()` method inside the `main()` function of `app_test.dart` (e.g., `new_feature.main();`).

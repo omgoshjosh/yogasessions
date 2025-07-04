@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaPose {
 
- String get id; String? get originalId; String get name; String get description; String? get sanskritName; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels;@DurationConverter() Duration get duration; String get creatorUserId; bool get isPublished; bool get inSync;
+ String? get id; String? get originalId; String? get name; String? get description; String? get sanskritName; int? get strengthDifficulty; int? get flexibilityDifficulty; int? get balanceDifficulty; List<String> get labels;@DurationConverter() Duration? get duration; String? get creatorUserId; bool get isPublished; bool get inSync;
 /// Create a copy of YogaPose
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $YogaPoseCopyWith<$Res>  {
   factory $YogaPoseCopyWith(YogaPose value, $Res Function(YogaPose) _then) = _$YogaPoseCopyWithImpl;
 @useResult
 $Res call({
- String id, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished, bool inSync
+ String? id, String? originalId, String? name, String? description, String? sanskritName, int? strengthDifficulty, int? flexibilityDifficulty, int? balanceDifficulty, List<String> labels,@DurationConverter() Duration? duration, String? creatorUserId, bool isPublished, bool inSync
 });
 
 
@@ -66,20 +66,20 @@ class _$YogaPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaPose
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,Object? inSync = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? sanskritName = freezed,Object? strengthDifficulty = freezed,Object? flexibilityDifficulty = freezed,Object? balanceDifficulty = freezed,Object? labels = null,Object? duration = freezed,Object? creatorUserId = freezed,Object? isPublished = null,Object? inSync = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
-as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
-as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
-as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
-as int,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
-as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
-as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: freezed == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,flexibilityDifficulty: freezed == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,balanceDifficulty: freezed == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: freezed == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration?,creatorUserId: freezed == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String?,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -89,20 +89,20 @@ as bool,
 
 
 /// @nodoc
+@JsonSerializable()
 
-@JsonSerializable(explicitToJson: true)
 class _YogaPose extends YogaPose {
-  const _YogaPose({required this.id, this.originalId, required this.name, required this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() required this.duration, this.creatorUserId = '-1', this.isPublished = false, this.inSync = true}): _labels = labels,super._();
+  const _YogaPose({this.id, this.originalId, this.name = 'Name Not Provided', this.description = 'Description not provided.', this.sanskritName = 'Sanskrit Name Unavailable', this.strengthDifficulty, this.flexibilityDifficulty, this.balanceDifficulty, final  List<String> labels = const [], @DurationConverter() this.duration, this.creatorUserId, this.isPublished = false, this.inSync = true}): _labels = labels,super._();
   factory _YogaPose.fromJson(Map<String, dynamic> json) => _$YogaPoseFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override final  String? originalId;
-@override final  String name;
-@override final  String description;
-@override final  String? sanskritName;
-@override@JsonKey() final  int strengthDifficulty;
-@override@JsonKey() final  int flexibilityDifficulty;
-@override@JsonKey() final  int balanceDifficulty;
+@override@JsonKey() final  String? name;
+@override@JsonKey() final  String? description;
+@override@JsonKey() final  String? sanskritName;
+@override final  int? strengthDifficulty;
+@override final  int? flexibilityDifficulty;
+@override final  int? balanceDifficulty;
  final  List<String> _labels;
 @override@JsonKey() List<String> get labels {
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -110,8 +110,8 @@ class _YogaPose extends YogaPose {
   return EqualUnmodifiableListView(_labels);
 }
 
-@override@DurationConverter() final  Duration duration;
-@override@JsonKey() final  String creatorUserId;
+@override@DurationConverter() final  Duration? duration;
+@override final  String? creatorUserId;
 @override@JsonKey() final  bool isPublished;
 @override@JsonKey() final  bool inSync;
 
@@ -148,7 +148,7 @@ abstract mixin class _$YogaPoseCopyWith<$Res> implements $YogaPoseCopyWith<$Res>
   factory _$YogaPoseCopyWith(_YogaPose value, $Res Function(_YogaPose) _then) = __$YogaPoseCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished, bool inSync
+ String? id, String? originalId, String? name, String? description, String? sanskritName, int? strengthDifficulty, int? flexibilityDifficulty, int? balanceDifficulty, List<String> labels,@DurationConverter() Duration? duration, String? creatorUserId, bool isPublished, bool inSync
 });
 
 
@@ -165,20 +165,20 @@ class __$YogaPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaPose
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,Object? inSync = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? sanskritName = freezed,Object? strengthDifficulty = freezed,Object? flexibilityDifficulty = freezed,Object? balanceDifficulty = freezed,Object? labels = null,Object? duration = freezed,Object? creatorUserId = freezed,Object? isPublished = null,Object? inSync = null,}) {
   return _then(_YogaPose(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
-as String?,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
-as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
-as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
-as int,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,duration: null == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
-as Duration,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
-as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,sanskritName: freezed == sanskritName ? _self.sanskritName : sanskritName // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: freezed == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,flexibilityDifficulty: freezed == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,balanceDifficulty: freezed == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,duration: freezed == duration ? _self.duration : duration // ignore: cast_nullable_to_non_nullable
+as Duration?,creatorUserId: freezed == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String?,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

@@ -7,6 +7,10 @@ This document outlines the development plan for the YogaSessions application. We
 All new features will be built following this iterative loop:
 
 1.  **Write Tests:** Add failing integration tests to the `feature-branch` that define the specification and desired user experience for the new code.
+    *   **Note on Integration Tests**: All integration tests are managed and run from a single entry point: `integration_test/app_test.dart`. This allows the CI system to discover and execute all test suites by running a single command. To add a new test suite:
+        1.  Create your new test file (e.g., `integration_test/new_feature_test.dart`).
+        2.  Import your new test file into `integration_test/app_test.dart` and give it a prefix (e.g., `import 'new_feature_test.dart' as new_feature;`).
+        3.  Add a call to your new test's `main()` method inside the `main()` function of `app_test.dart` (e.g., `new_feature.main();`).
 2.  **Iterate on Solutions:** Write the application code required to make the tests pass.
 3.  **Create Pull Request:** Make a PR from the `feature-branch` to the `rc` (release candidate) branch. This will trigger the Continuous Integration (CI) pipeline to run all automated tests.
 4.  **Review & Merge:** Once the PR is approved and all tests pass, merge the code into `rc`.
@@ -48,14 +52,16 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   "As a new user, I want to open the app and immediately see a list of featured yoga sessions I can explore."
     *   "As a new user, I want to browse all Featured yoga poses, flows, and sessions and see their details (including images/videos) without creating an account."
     *   "As a developer, I want to set up the project, CI/CD, and data models to support the core application."
+    *   "As an app admin, I need an admin screen to sync the Firestore database with seed data for poses, flows, and sessions, so that I can develop and test the UI for the read-only library."
 
 *   **Key Tasks & Associated Sprint Stories:**
     - [x]   **Project Setup (User Story 1.1):** Initialize Flutter project, add dependencies, set up Firebase.
     - [x]   **Continuous Integration (User Story 1.2):** Set up GitHub Actions to test pull requests against the `rc` branch.
-    - [ ]   **Continuous Deployment (User Story 1.3):** Set up GitHub Actions to deploy the `rc` branch to a staging environment.
-    - [ ]   **Data Models (User Story 3.1):** Create Freezed data classes for `YogaPose`, `YogaFlow`, and `YogaSession`.
+    - [ ]   **Continuous Integration (User Story 1.3):** Use seed data to initialize the database for integration tests.
+    - [ ]   **Admin Data Syncing (User Story 1.4):** Implement an `AdminScreen` with a function to sync the database from local JSON files.
+    - [ ]   **Continuous Deployment (User Story 1.5):** Set up GitHub Actions to deploy the `rc` branch to a staging environment.
+    - [x]   **Data Models (User Story 3.1):** Create Freezed data classes for `YogaPose`, `YogaFlow`, and `YogaSession`.
     - [ ]   **View Read-Only Library (User Story 4.1):** Create Firestore collections, seed data, and build the UI to display the public library (`PublicHomeScreen`, `FeaturedPosesScreen`, etc.).
-    - [ ]   **Admin Seeding:** Implement an `AdminScreen` with a function to seed the database from local JSON files.
 
 ### Milestone 2: Authentication (v0.2)
 

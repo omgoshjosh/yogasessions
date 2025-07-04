@@ -9,7 +9,7 @@ part of 'yoga_flow_pose.dart';
 _YogaFlowPose _$YogaFlowPoseFromJson(
   Map<String, dynamic> json,
 ) => _YogaFlowPose(
-  id: json['id'] as String,
+  id: json['id'] as String?,
   poseId: json['poseId'] as String,
   flowId: json['flowId'] as String,
   sessionId: json['sessionId'] as String?,

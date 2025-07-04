@@ -10,17 +10,17 @@ abstract class YogaPose with _$YogaPose {
   const YogaPose._();
 
   const factory YogaPose({
-    required String id,
+    String? id,
     String? originalId,
-    required String name,
-    required String description,
-    String? sanskritName,
-    @Default(1) int strengthDifficulty,
-    @Default(1) int flexibilityDifficulty,
-    @Default(1) int balanceDifficulty,
+    @Default('Name Not Provided') String? name,
+    @Default('Description not provided.') String? description,
+    @Default('Sanskrit Name Unavailable') String? sanskritName,
+    int? strengthDifficulty,
+    int? flexibilityDifficulty,
+    int? balanceDifficulty,
     @Default([]) List<String> labels,
-    @DurationConverter() required Duration duration,
-    @Default('-1') String creatorUserId,
+    @DurationConverter() Duration? duration,
+    String? creatorUserId,
     @Default(false) bool isPublished,
     @Default(true) bool inSync,
   }) = _YogaPose;
@@ -28,6 +28,20 @@ abstract class YogaPose with _$YogaPose {
   factory YogaPose.fromJson(Map<String, dynamic> json) => _$YogaPoseFromJson(json);
 
   double get overallDifficulty {
-    return (strengthDifficulty + flexibilityDifficulty + balanceDifficulty) / 3.0;
+    double sum = 0;
+    int count = 0;
+    if (strengthDifficulty != null) {
+      sum += strengthDifficulty!;
+      count++;
+    }
+    if (flexibilityDifficulty != null) {
+      sum += flexibilityDifficulty!;
+      count++;
+    }
+    if (balanceDifficulty != null) {
+      sum += balanceDifficulty!;
+      count++;
+    }
+    return count == 0 ? 0.0 : sum / count;
   }
 }

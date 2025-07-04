@@ -7,7 +7,7 @@ part 'yoga_flow_pose.g.dart';
 @freezed
 abstract class YogaFlowPose with _$YogaFlowPose {
   const factory YogaFlowPose({
-    required String id,
+    String? id,
     required String poseId,
     required String flowId,
     String? sessionId,

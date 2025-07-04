@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaFlow {
 
- String get id; String? get originalId; String get name; String get description; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels; String get creatorUserId; bool get isPublished; bool get inSync;
+ String? get id; String? get originalId; String? get name; String? get description; int? get strengthDifficulty; int? get flexibilityDifficulty; int? get balanceDifficulty; List<String> get labels; String? get creatorUserId; bool get isPublished; bool get inSync;
 /// Create a copy of YogaFlow
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $YogaFlowCopyWith<$Res>  {
   factory $YogaFlowCopyWith(YogaFlow value, $Res Function(YogaFlow) _then) = _$YogaFlowCopyWithImpl;
 @useResult
 $Res call({
- String id, String? originalId, String name, String description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished, bool inSync
+ String? id, String? originalId, String? name, String? description, int? strengthDifficulty, int? flexibilityDifficulty, int? balanceDifficulty, List<String> labels, String? creatorUserId, bool isPublished, bool inSync
 });
 
 
@@ -66,18 +66,18 @@ class _$YogaFlowCopyWithImpl<$Res>
 
 /// Create a copy of YogaFlow
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,Object? inSync = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? strengthDifficulty = freezed,Object? flexibilityDifficulty = freezed,Object? balanceDifficulty = freezed,Object? labels = null,Object? creatorUserId = freezed,Object? isPublished = null,Object? inSync = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
-as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
-as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
-as int,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
-as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: freezed == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,flexibilityDifficulty: freezed == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,balanceDifficulty: freezed == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,labels: null == labels ? _self.labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,creatorUserId: freezed == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String?,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -87,19 +87,19 @@ as bool,
 
 
 /// @nodoc
+@JsonSerializable()
 
-@JsonSerializable(explicitToJson: true)
 class _YogaFlow extends YogaFlow {
-  const _YogaFlow({required this.id, this.originalId, required this.name, required this.description, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], this.creatorUserId = '-1', this.isPublished = false, this.inSync = true}): _labels = labels,super._();
+  const _YogaFlow({this.id, this.originalId, this.name = 'Name Not Provided', this.description = 'Description not provided.', this.strengthDifficulty, this.flexibilityDifficulty, this.balanceDifficulty, final  List<String> labels = const [], this.creatorUserId, this.isPublished = false, this.inSync = true}): _labels = labels,super._();
   factory _YogaFlow.fromJson(Map<String, dynamic> json) => _$YogaFlowFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override final  String? originalId;
-@override final  String name;
-@override final  String description;
-@override@JsonKey() final  int strengthDifficulty;
-@override@JsonKey() final  int flexibilityDifficulty;
-@override@JsonKey() final  int balanceDifficulty;
+@override@JsonKey() final  String? name;
+@override@JsonKey() final  String? description;
+@override final  int? strengthDifficulty;
+@override final  int? flexibilityDifficulty;
+@override final  int? balanceDifficulty;
  final  List<String> _labels;
 @override@JsonKey() List<String> get labels {
   if (_labels is EqualUnmodifiableListView) return _labels;
@@ -107,7 +107,7 @@ class _YogaFlow extends YogaFlow {
   return EqualUnmodifiableListView(_labels);
 }
 
-@override@JsonKey() final  String creatorUserId;
+@override final  String? creatorUserId;
 @override@JsonKey() final  bool isPublished;
 @override@JsonKey() final  bool inSync;
 
@@ -144,7 +144,7 @@ abstract mixin class _$YogaFlowCopyWith<$Res> implements $YogaFlowCopyWith<$Res>
   factory _$YogaFlowCopyWith(_YogaFlow value, $Res Function(_YogaFlow) _then) = __$YogaFlowCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? originalId, String name, String description, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels, String creatorUserId, bool isPublished, bool inSync
+ String? id, String? originalId, String? name, String? description, int? strengthDifficulty, int? flexibilityDifficulty, int? balanceDifficulty, List<String> labels, String? creatorUserId, bool isPublished, bool inSync
 });
 
 
@@ -161,18 +161,18 @@ class __$YogaFlowCopyWithImpl<$Res>
 
 /// Create a copy of YogaFlow
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? creatorUserId = null,Object? isPublished = null,Object? inSync = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? originalId = freezed,Object? name = freezed,Object? description = freezed,Object? strengthDifficulty = freezed,Object? flexibilityDifficulty = freezed,Object? balanceDifficulty = freezed,Object? labels = null,Object? creatorUserId = freezed,Object? isPublished = null,Object? inSync = null,}) {
   return _then(_YogaFlow(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,strengthDifficulty: null == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
-as int,flexibilityDifficulty: null == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
-as int,balanceDifficulty: null == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
-as int,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
-as List<String>,creatorUserId: null == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
-as String,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,originalId: freezed == originalId ? _self.originalId : originalId // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,strengthDifficulty: freezed == strengthDifficulty ? _self.strengthDifficulty : strengthDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,flexibilityDifficulty: freezed == flexibilityDifficulty ? _self.flexibilityDifficulty : flexibilityDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,balanceDifficulty: freezed == balanceDifficulty ? _self.balanceDifficulty : balanceDifficulty // ignore: cast_nullable_to_non_nullable
+as int?,labels: null == labels ? _self._labels : labels // ignore: cast_nullable_to_non_nullable
+as List<String>,creatorUserId: freezed == creatorUserId ? _self.creatorUserId : creatorUserId // ignore: cast_nullable_to_non_nullable
+as String?,isPublished: null == isPublished ? _self.isPublished : isPublished // ignore: cast_nullable_to_non_nullable
 as bool,inSync: null == inSync ? _self.inSync : inSync // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

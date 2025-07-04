@@ -9,15 +9,15 @@ abstract class YogaSession with _$YogaSession {
   const YogaSession._();
 
   const factory YogaSession({
-    required String id,
+    String? id,
     String? originalId,
-    required String name,
-    required String description,
-    @Default(1) int strengthDifficulty,
-    @Default(1) int flexibilityDifficulty,
-    @Default(1) int balanceDifficulty,
+    @Default('Name Not Provided') String? name,
+    @Default('Description not provided.') String? description,
+    int? strengthDifficulty,
+    int? flexibilityDifficulty,
+    int? balanceDifficulty,
     @Default([]) List<String> labels,
-    @Default('-1') String creatorUserId,
+    String? creatorUserId,
     @Default(false) bool isPublished,
     @Default(true) bool inSync,
   }) = _YogaSession;
@@ -25,6 +25,20 @@ abstract class YogaSession with _$YogaSession {
   factory YogaSession.fromJson(Map<String, dynamic> json) => _$YogaSessionFromJson(json);
 
   double get overallDifficulty {
-    return (strengthDifficulty + flexibilityDifficulty + balanceDifficulty) / 3.0;
+    double sum = 0;
+    int count = 0;
+    if (strengthDifficulty != null) {
+      sum += strengthDifficulty!;
+      count++;
+    }
+    if (flexibilityDifficulty != null) {
+      sum += flexibilityDifficulty!;
+      count++;
+    }
+    if (balanceDifficulty != null) {
+      sum += balanceDifficulty!;
+      count++;
+    }
+    return count == 0 ? 0.0 : sum / count;
   }
 }

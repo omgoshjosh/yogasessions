@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$YogaFlowPose {
 
- String get id; String get poseId; String get flowId; String? get sessionId; int get orderIndex; bool get inSync;// Mirrored properties from YogaPose
+ String? get id; String get poseId; String get flowId; String? get sessionId; int get orderIndex; bool get inSync;// Mirrored properties from YogaPose
  String? get originalId; String get name; String get description; String? get sanskritName; int get strengthDifficulty; int get flexibilityDifficulty; int get balanceDifficulty; List<String> get labels;@DurationConverter() Duration get duration; String get creatorUserId; bool get isPublished;
 /// Create a copy of YogaFlowPose
 /// with the given fields replaced by the non-null parameter values.
@@ -50,7 +50,7 @@ abstract mixin class $YogaFlowPoseCopyWith<$Res>  {
   factory $YogaFlowPoseCopyWith(YogaFlowPose value, $Res Function(YogaFlowPose) _then) = _$YogaFlowPoseCopyWithImpl;
 @useResult
 $Res call({
- String id, String poseId, String flowId, String? sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
+ String? id, String poseId, String flowId, String? sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
 });
 
 
@@ -67,10 +67,10 @@ class _$YogaFlowPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaFlowPose
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? poseId = null,Object? flowId = null,Object? sessionId = freezed,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? poseId = null,Object? flowId = null,Object? sessionId = freezed,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
 as String,flowId: null == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
 as String,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
 as String?,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable
@@ -97,10 +97,10 @@ as bool,
 @JsonSerializable()
 
 class _YogaFlowPose implements YogaFlowPose {
-  const _YogaFlowPose({required this.id, required this.poseId, required this.flowId, this.sessionId, required this.orderIndex, this.inSync = true, this.originalId, required this.name, required this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() required this.duration, this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
+  const _YogaFlowPose({this.id, required this.poseId, required this.flowId, this.sessionId, required this.orderIndex, this.inSync = true, this.originalId, required this.name, required this.description, this.sanskritName, this.strengthDifficulty = 1, this.flexibilityDifficulty = 1, this.balanceDifficulty = 1, final  List<String> labels = const [], @DurationConverter() required this.duration, this.creatorUserId = '-1', this.isPublished = false}): _labels = labels;
   factory _YogaFlowPose.fromJson(Map<String, dynamic> json) => _$YogaFlowPoseFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override final  String poseId;
 @override final  String flowId;
 @override final  String? sessionId;
@@ -158,7 +158,7 @@ abstract mixin class _$YogaFlowPoseCopyWith<$Res> implements $YogaFlowPoseCopyWi
   factory _$YogaFlowPoseCopyWith(_YogaFlowPose value, $Res Function(_YogaFlowPose) _then) = __$YogaFlowPoseCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String poseId, String flowId, String? sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
+ String? id, String poseId, String flowId, String? sessionId, int orderIndex, bool inSync, String? originalId, String name, String description, String? sanskritName, int strengthDifficulty, int flexibilityDifficulty, int balanceDifficulty, List<String> labels,@DurationConverter() Duration duration, String creatorUserId, bool isPublished
 });
 
 
@@ -175,10 +175,10 @@ class __$YogaFlowPoseCopyWithImpl<$Res>
 
 /// Create a copy of YogaFlowPose
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? poseId = null,Object? flowId = null,Object? sessionId = freezed,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? poseId = null,Object? flowId = null,Object? sessionId = freezed,Object? orderIndex = null,Object? inSync = null,Object? originalId = freezed,Object? name = null,Object? description = null,Object? sanskritName = freezed,Object? strengthDifficulty = null,Object? flexibilityDifficulty = null,Object? balanceDifficulty = null,Object? labels = null,Object? duration = null,Object? creatorUserId = null,Object? isPublished = null,}) {
   return _then(_YogaFlowPose(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,poseId: null == poseId ? _self.poseId : poseId // ignore: cast_nullable_to_non_nullable
 as String,flowId: null == flowId ? _self.flowId : flowId // ignore: cast_nullable_to_non_nullable
 as String,sessionId: freezed == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
 as String?,orderIndex: null == orderIndex ? _self.orderIndex : orderIndex // ignore: cast_nullable_to_non_nullable

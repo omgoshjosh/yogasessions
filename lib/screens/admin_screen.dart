@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yogasessions/integration_test/test_helpers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package.firebase_auth/firebase_auth.dart';
 
 // Renamed from HomeScreen to AdminScreen
 class AdminScreen extends StatelessWidget {
@@ -22,10 +25,11 @@ class AdminScreen extends StatelessWidget {
             child: ElevatedButton.icon(
               icon: const Icon(Icons.data_usage),
               label: const Text('Seed Database'),
-              onPressed: () {
-                // TODO: Implement database seeding logic here.
+              onPressed: () async {
+                final helpers = TestHelpers(FirebaseFirestore.instance, FirebaseAuth.instance);
+                await helpers.seedData();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Seeding functionality not implemented yet.')),
+                  const SnackBar(content: Text('Database has been seeded.')),
                 );
               },
               style: ElevatedButton.styleFrom(
