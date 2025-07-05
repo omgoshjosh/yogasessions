@@ -2,24 +2,108 @@
   "yoga_flows": [
     {
       "name": "Sun Salutation A",
-      "description": "A classic vinyasa flow to warm up the body."
+      "description": "A classic vinyasa flow to warm up the body.",
+      "strengthDifficulty": 2,
+      "flexibilityDifficulty": 2,
+      "balanceDifficulty": 3,
+      "labels": ["vinyasa", "warm-up"],
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     },
     {
       "name": "Hip Opening Sequence",
-      "description": "A series of poses to release tension in the hips."
+      "description": "A series of poses to release tension in the hips.",
+      "strengthDifficulty": 1,
+      "flexibilityDifficulty": 3,
+      "balanceDifficulty": 2,
+      "labels": ["flexibility", "hips"],
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     }
   ],
   "yoga_flow_poses": {
     "Sun Salutation A": [
-      "Mountain Pose",
-      "Upward-Facing Dog",
-      "Plank Pose",
-      "Downward-Facing Dog"
+      {
+        "poseId": "placeholder_pose_id_mountain",
+        "flowId": "Sun Salutation A",
+        "orderIndex": 0,
+        "name": "Mountain Pose",
+        "description": "A foundational standing pose.",
+        "duration": 30,
+        "strengthDifficulty": 1,
+        "flexibilityDifficulty": 1,
+        "balanceDifficulty": 1
+      },
+      {
+        "poseId": "placeholder_pose_id_upward_dog",
+        "flowId": "Sun Salutation A",
+        "orderIndex": 1,
+        "name": "Upward-Facing Dog",
+        "description": "A back-bending pose.",
+        "duration": 30,
+        "strengthDifficulty": 2,
+        "flexibilityDifficulty": 2,
+        "balanceDifficulty": 2
+      },
+      {
+        "poseId": "placeholder_pose_id_plank",
+        "flowId": "Sun Salutation A",
+        "orderIndex": 2,
+        "name": "Plank Pose",
+        "description": "A core-strengthening pose.",
+        "duration": 30,
+        "strengthDifficulty": 3,
+        "flexibilityDifficulty": 1,
+        "balanceDifficulty": 2
+      },
+      {
+        "poseId": "placeholder_pose_id_downward_dog",
+        "flowId": "Sun Salutation A",
+        "orderIndex": 3,
+        "name": "Downward-Facing Dog",
+        "description": "An all-body stretch.",
+        "duration": 60,
+        "strengthDifficulty": 2,
+        "flexibilityDifficulty": 2,
+        "balanceDifficulty": 2
+      }
     ],
     "Hip Opening Sequence": [
-      "Pigeon Pose",
-      "Happy Baby Pose",
-      "Bound Angle Pose"
+      {
+        "poseId": "placeholder_pose_id_pigeon",
+        "flowId": "Hip Opening Sequence",
+        "orderIndex": 0,
+        "name": "Pigeon Pose",
+        "description": "A deep hip opener.",
+        "duration": 60,
+        "strengthDifficulty": 1,
+        "flexibilityDifficulty": 3,
+        "balanceDifficulty": 1
+      },
+      {
+        "poseId": "placeholder_pose_id_happy_baby",
+        "flowId": "Hip Opening Sequence",
+        "orderIndex": 1,
+        "name": "Happy Baby Pose",
+        "description": "A gentle hip opener.",
+        "duration": 60,
+        "strengthDifficulty": 1,
+        "flexibilityDifficulty": 2,
+        "balanceDifficulty": 1
+      },
+      {
+        "poseId": "placeholder_pose_id_bound_angle",
+        "flowId": "Hip Opening Sequence",
+        "orderIndex": 2,
+        "name": "Bound Angle Pose",
+        "description": "A seated hip opener.",
+        "duration": 60,
+        "strengthDifficulty": 1,
+        "flexibilityDifficulty": 3,
+        "balanceDifficulty": 1
+      }
     ]
   }
 }

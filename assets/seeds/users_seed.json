@@ -16,7 +16,7 @@
   },
   {
     "email": "senterright@gmail.com",
-    "displayName": "Admin",
+    "displayName": "Admin User",
     "photoUrl": "assets/images/profile/default_profile.png",
     "isEmailVerified": true,
     "isAdmin": true

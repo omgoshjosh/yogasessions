@@ -1,304 +1,57 @@
+
 {
   "yoga_poses": [
     {
       "name": "Mountain Pose",
       "sanskritName": "Tadasana",
       "description": "A foundational standing pose that improves posture and body awareness.",
-      "imageUrl": "assets/images/poses/mountain_pose.png"
+      "strengthDifficulty": 1,
+      "flexibilityDifficulty": 1,
+      "balanceDifficulty": 2,
+      "labels": ["standing", "beginner"],
+      "duration": 30,
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     },
     {
       "name": "Downward-Facing Dog",
       "sanskritName": "Adho Mukha Svanasana",
       "description": "An inversion that stretches the entire body, building strength in the arms and legs.",
-      "imageUrl": "assets/images/poses/downward_facing_dog.png"
+      "strengthDifficulty": 2,
+      "flexibilityDifficulty": 2,
+      "balanceDifficulty": 2,
+      "labels": ["inversion", "strength"],
+      "duration": 60,
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     },
     {
       "name": "Warrior I",
       "sanskritName": "Virabhadrasana I",
       "description": "A powerful standing pose that builds strength and confidence.",
-      "imageUrl": "assets/images/poses/warrior_i.png"
-    },
-    {
-      "name": "Warrior II",
-      "sanskritName": "Virabhadrasana II",
-      "description": "A hip-opening standing pose that strengthens the legs and core.",
-      "imageUrl": "assets/images/poses/warrior_ii.png"
+      "strengthDifficulty": 3,
+      "flexibilityDifficulty": 1,
+      "balanceDifficulty": 3,
+      "labels": ["standing", "strength"],
+      "duration": 45,
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     },
     {
       "name": "Triangle Pose",
       "sanskritName": "Trikonasana",
       "description": "A standing pose that stretches the hamstrings, hips, and spine.",
-      "imageUrl": "assets/images/poses/triangle_pose.png"
-    },
-    {
-      "name": "Tree Pose",
-      "sanskritName": "Vrksasana",
-      "description": "A balancing pose that improves focus and stability.",
-      "imageUrl": "assets/images/poses/tree_pose.png"
-    },
-    {
-      "name": "Bridge Pose",
-      "sanskritName": "Setu Bandhasana",
-      "description": "A gentle backbend that opens the chest and strengthens the back.",
-      "imageUrl": "assets/images/poses/bridge_pose.png"
-    },
-    {
-      "name": "Cobra Pose",
-      "sanskritName": "Bhujangasana",
-      "description": "A backbend that strengthens the spine and opens the chest.",
-      "imageUrl": "assets/images/poses/cobra_pose.png"
-    },
-    {
-      "name": "Child's Pose",
-      "sanskritName": "Balasana",
-      "description": "A resting pose that gently stretches the back, hips, and thighs.",
-      "imageUrl": "assets/images/poses/childs_pose.png"
-    },
-    {
-      "name": "Cat-Cow Pose",
-      "sanskritName": "Marjaryasana-Bitilasana",
-      "description": "A gentle warm-up that links breath to movement and improves spinal flexibility.",
-      "imageUrl": "assets/images/poses/cat_cow_pose.png"
-    },
-    {
-      "name": "Plank Pose",
-      "sanskritName": "Phalakasana",
-      "description": "A core-strengthening pose that builds stability in the entire body.",
-      "imageUrl": "assets/images/poses/plank_pose.png"
-    },
-    {
-      "name": "Chair Pose",
-      "sanskritName": "Utkatasana",
-      "description": "A powerful standing pose that strengthens the legs and core.",
-      "imageUrl": "assets/images/poses/chair_pose.png"
-    },
-    {
-      "name": "Garland Pose",
-      "sanskritName": "Malasana",
-      "description": "A deep squat that stretches the hips, groin, and lower back.",
-      "imageUrl": "assets/images/poses/garland_pose.png"
-    },
-    {
-      "name": "Pigeon Pose",
-      "sanskritName": "Eka Pada Rajakapotasana",
-      "description": "A hip-opening pose that stretches the hip flexors and rotators.",
-      "imageUrl": "assets/images/poses/pigeon_pose.png"
-    },
-    {
-      "name": "Upward-Facing Dog",
-      "sanskritName": "Urdhva Mukha Svanasana",
-      "description": "A powerful backbend that opens the chest and strengthens the arms.",
-      "imageUrl": "assets/images/poses/upward_facing_dog.png"
-    },
-    {
-      "name": "Half Moon Pose",
-      "sanskritName": "Ardha Chandrasana",
-      "description": "A balancing pose that challenges stability and opens the hips.",
-      "imageUrl": "assets/images/poses/half_moon_pose.png"
-    },
-    {
-      "name": "Camel Pose",
-      "sanskritName": "Ustrasana",
-      "description": "A deep backbend that opens the entire front of the body.",
-      "imageUrl": "assets/images/poses/camel_pose.png"
-    },
-    {
-      "name": "Corpse Pose",
-      "sanskritName": "Savasana",
-      "description": "A final resting pose for deep relaxation and integration.",
-      "imageUrl": "assets/images/poses/corpse_pose.png"
-    },
-    {
-      "name": "Happy Baby Pose",
-      "sanskritName": "Ananda Balasana",
-      "description": "A gentle pose that stretches the inner thighs and lower back.",
-      "imageUrl": "assets/images/poses/happy_baby_pose.png"
-    },
-    {
-      "name": "Fish Pose",
-      "sanskritName": "Matsyasana",
-      "description": "A backbend that opens the throat and chest.",
-      "imageUrl": "assets/images/poses/fish_pose.png"
-    },
-    {
-      "name": "Low Lunge",
-      "sanskritName": "Anjaneyasana",
-      "description": "A deep stretch for the hip flexors and quadriceps.",
-      "imageUrl": "assets/images/poses/low_lunge.png"
-    },
-    {
-      "name": "High Lunge",
-      "sanskritName": "Ashta Chandrasana",
-      "description": "A strengthening pose that challenges balance and builds leg power.",
-      "imageUrl": "assets/images/poses/high_lunge.png"
-    },
-    {
-      "name": "Pyramid Pose",
-      "sanskritName": "Parsvottanasana",
-      "description": "An intense hamstring stretch.",
-      "imageUrl": "assets/images/poses/pyramid_pose.png"
-    },
-    {
-      "name": "Seated Forward Bend",
-      "sanskritName": "Paschimottanasana",
-      "description": "A deep forward fold that calms the mind and stretches the spine.",
-      "imageUrl": "assets/images/poses/seated_forward_bend.png"
-    },
-    {
-      "name": "Bound Angle Pose",
-      "sanskritName": "Baddha Konasana",
-      "description": "A hip-opening pose that stretches the inner thighs.",
-      "imageUrl": "assets/images/poses/bound_angle_pose.png"
-    },
-    {
-      "name": "Headstand",
-      "sanskritName": "Sirsasana",
-      "description": "An advanced inversion known as the 'king' of all poses.",
-      "imageUrl": "assets/images/poses/headstand.png"
-    },
-    {
-      "name": "Shoulder Stand",
-      "sanskritName": "Sarvangasana",
-      "description": "An inversion known as the 'queen' of all poses.",
-      "imageUrl": "assets/images/poses/shoulder_stand.png"
-    },
-    {
-      "name": "Plow Pose",
-      "sanskritName": "Halasana",
-      "description": "An inversion that deeply stretches the spine and shoulders.",
-      "imageUrl": "assets/images/poses/plow_pose.png"
-    },
-    {
-      "name": "Crow Pose",
-      "sanskritName": "Bakasana",
-      "description": "An arm balance that builds upper body strength and confidence.",
-      "imageUrl": "assets/images/poses/crow_pose.png"
-    },
-    {
-      "name": "Side Plank",
-      "sanskritName": "Vasisthasana",
-      "description": "A core-strengthening pose that builds stability in the shoulders and wrists.",
-      "imageUrl": "assets/images/poses/side_plank.png"
-    },
-    {
-      "name": "Extended Side Angle Pose",
-      "sanskritName": "Utthita Parsvakonasana",
-      "description": "A standing pose that stretches the entire side body.",
-      "imageUrl": "assets/images/poses/extended_side_angle_pose.png"
-    },
-    {
-      "name": "Reverse Warrior",
-      "sanskritName": "Viparita Virabhadrasana",
-      "description": "A graceful backbend that opens the side body.",
-      "imageUrl": "assets/images/poses/reverse_warrior.png"
-    },
-    {
-      "name": "Dolphin Pose",
-      "sanskritName": "Ardha Pincha Mayurasana",
-      "description": "A forearm-based inversion that strengthens the arms and opens the shoulders.",
-      "imageUrl": "assets/images/poses/dolphin_pose.png"
-    },
-    {
-      "name": "Eagle Pose",
-      "sanskritName": "Garudasana",
-      "description": "A balancing pose that improves focus and stretches the shoulders and hips.",
-      "imageUrl": "assets/images/poses/eagle_pose.png"
-    },
-    {
-      "name": "Dancer Pose",
-      "sanskritName": "Natarajasana",
-      "description": "A beautiful balancing pose that opens the chest and shoulders.",
-      "imageUrl": "assets/images/poses/dancer_pose.png"
-    },
-    {
-      "name": "Wild Thing",
-      "sanskritName": "Camatkarasana",
-      "description": "An expressive backbend and heart-opener.",
-      "imageUrl": "assets/images/poses/wild_thing.png"
-    },
-    {
-      "name": "Boat Pose",
-      "sanskritName": "Navasana",
-      "description": "A challenging core-strengthening pose.",
-      "imageUrl": "assets/images/poses/boat_pose.png"
-    },
-    {
-      "name": "Wheel Pose",
-      "sanskritName": "Urdhva Dhanurasana",
-      "description": "A deep backbend that opens the entire front body.",
-      "imageUrl": "assets/images/poses/wheel_pose.png"
-    },
-    {
-      "name": "Reclining Hero Pose",
-      "sanskritName": "Supta Virasana",
-      "description": "A deep stretch for the quadriceps and hip flexors.",
-      "imageUrl": "assets/images/poses/reclining_hero_pose.png"
-    },
-    {
-      "name": "Sphinx Pose",
-      "sanskritName": "Salamba Bhujangasana",
-      "description": "A gentle backbend that is a modification of Cobra Pose.",
-      "imageUrl": "assets/images/poses/sphinx_pose.png"
-    },
-    {
-      "name": "Locust Pose",
-      "sanskritName": "Salabhasana",
-      "description": "A backbend that strengthens the entire back of the body.",
-      "imageUrl": "assets/images/poses/locust_pose.png"
-    },
-    {
-      "name": "Half Lord of the Fishes Pose",
-      "sanskritName": "Ardha Matsyendrasana",
-      "description": "A seated spinal twist that improves digestion and spinal mobility.",
-      "imageUrl": "assets/images/poses/half_lord_of_the_fishes_pose.png"
-    },
-    {
-      "name": "Cow Face Pose",
-      "sanskritName": "Gomukhasana",
-      "description": "A seated pose that deeply stretches the hips and shoulders.",
-      "imageUrl": "assets/images/poses/cow_face_pose.png"
-    },
-    {
-      "name": "Standing Split",
-      "sanskritName": "Urdhva Prasarita Eka Padasana",
-      "description": "An inversion that deeply stretches the hamstrings.",
-      "imageUrl": "assets/images/poses/standing_split.png"
-    },
-    {
-      "name": "Wide-Legged Forward Bend",
-      "sanskritName": "Prasarita Padottanasana",
-      "description": "A forward fold that stretches the hamstrings and back.",
-      "imageUrl": "assets/images/poses/wide_legged_forward_bend.png"
-    },
-    {
-      "name": "Puppy Pose",
-      "sanskritName": "Uttana Shishosana",
-      "description": "A gentle backbend that opens the heart and shoulders.",
-      "imageUrl": "assets/images/poses/puppy_pose.png"
-    },
-    {
-      "name": "Thread the Needle Pose",
-      "sanskritName": "Urdhva Mukha Pasasana",
-      "description": "A gentle twist that releases tension in the upper back and shoulders.",
-      "imageUrl": "assets/images/poses/thread_the_needle_pose.png"
-    },
-    {
-      "name": "Legs-Up-the-Wall Pose",
-      "sanskritName": "Viparita Karani",
-      "description": "A restorative inversion that calms the nervous system.",
-      "imageUrl": "assets/images/poses/legs_up_the_wall_pose.png"
-    },
-    {
-      "name": "Goddess Pose",
-      "sanskritName": "Utkata Konasana",
-      "description": "A powerful squat that strengthens the lower body.",
-      "imageUrl": "assets/images/poses/goddess_pose.png"
-    },
-    {
-      "name": "Heron Pose",
-      "sanskritName": "Krounchasana",
-      "description": "A challenging seated hamstring stretch.",
-      "imageUrl": "assets/images/poses/heron_pose.png"
+      "strengthDifficulty": 2,
+      "flexibilityDifficulty": 3,
+      "balanceDifficulty": 2,
+      "labels": ["standing", "stretch"],
+      "duration": 60,
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     }
   ]
 }

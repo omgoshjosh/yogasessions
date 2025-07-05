@@ -1,22 +1,18 @@
-class User {
-  final String id;
-  final String? email;
-  final String? password;
-  final String? displayName;
-  final String? photoUrl;
-  final bool? isEmailVerified;
-  final bool? isAdmin;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  User({
-    required this.id,
-    this.email,
-    this.password,
-    this.displayName,
-    this.photoUrl,
-    this.isEmailVerified,
-    this.isAdmin,
-  });
+part 'user.freezed.dart';
+part 'user.g.dart';
 
-  // You might want to add factory constructors for fromJson/toJson later
-  // for data persistence and API communication.
+@freezed
+abstract class User with _$User {
+  const factory User({
+    required String id,
+    String? email,
+    String? displayName,
+    String? photoUrl,
+    @Default(false) bool isEmailVerified,
+    @Default(false) bool isAdmin,
+  }) = _User;
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
