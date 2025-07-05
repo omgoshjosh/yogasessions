@@ -74,6 +74,34 @@ jobs:
           snapshot-save-on-exit: true
           script: flutter test -r expanded integration_test/app_test.dart
 
+  robo_test_android:
+    needs: test_android
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - name: Decode google-services.json
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
+      - run: flutter build appbundle --debug
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          project_id: 'yogasessions2'
+      - name: Run Instrumentation Tests in Firebase Test Lab
+        run: gcloud firebase test android run --app build/app/outputs/bundle/debug/app-debug.aab
+
+
   # Job for iOS
 #  test_ios:
 #    runs-on: macos-latest
