@@ -42,7 +42,7 @@ void main() {
       // Add other emulators like Storage here if needed.
       app = YogaSessionsApp();
       // Instantiate helpers
-      helpers = TestHelpers(FirebaseFirestore.instance, FirebaseAuth.instance);
+      helpers = TestHelpers(FirebaseFirestore.instance, FirebaseAuth.instance, debug: true);
     });
 
     setUp(() async {

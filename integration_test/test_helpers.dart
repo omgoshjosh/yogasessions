@@ -8,7 +8,7 @@ class TestHelpers {
   final FirebaseFirestore firestore;
   final FirebaseAuth auth;
   final bool debug;
-  final String firebaseProjectId = 'yogasessions-34670';
+  final String firebaseProjectId = 'yogasessions2';
   late final SeedingService _seedingService;
 
   TestHelpers(this.firestore, this.auth, {this.debug = false}) {

@@ -47,12 +47,17 @@ class SeedingService {
 
     for (final userSeed in usersSeed) {
       try {
-        // Create user in Firebase Auth
-        final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-          email: userSeed['email'],
-          password: 'password123', // A standard password for all test users
-        );
-        final User user = userCredential.user!;
+        UserCredential userCredential;
+        if(userSeed['email'] != null) {
+          // Create user in Firebase Auth
+          userCredential = await _auth.createUserWithEmailAndPassword(
+            email: userSeed['email'],
+            password: 'password123', // A standard password for all test users
+          );
+        } else {
+          userCredential = await _auth.signInAnonymously();
+        }
+        User user = userCredential.user!;
 
         // Update Auth user profile
         await user.updateProfile(
