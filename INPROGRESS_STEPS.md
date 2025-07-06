@@ -4,33 +4,23 @@ This document outlines the steps to complete User Story 4.1: "As a new user, I w
 
 ### Plan of Action
 
-- [ ] **Write Integration Tests First**: In keeping with TDD, create a new test file: `integration_test/read_only_user_flow_test.dart`. This test will initially fail and will guide development. It should verify the following user journey:
-    *   The app loads to a `PublicHomeScreen` that shows options to navigate to Poses, Flows, and Sessions.
-    *   Tapping "Sessions" navigates to a `FeaturedSessionsScreen` that lists all `isPublished: true` sessions from Firestore.
-    *   Tapping a specific session from the list navigates to a `SessionDetailScreen` which correctly displays the details of that session, including its child poses and flows from sub-collections.
-    *   (Optional but recommended) Repeat the process for the Flows and Poses journeys.
+- [x] **Write Integration Tests First**: Modify `integration_test/anonymous_user_flow_test.dart` to validate the full, explicit read-only user journeys:
+    *   **App Launch Journey:** Verifies the `PublicHomeScreen` shows navigation buttons for Poses, Flows, and Sessions, plus "Login" and "Create Account" buttons.
+    *   **Comprehensive Browsing Journey:**
+        *   Taps "Poses", verifies navigation to `FeaturedPosesScreen`, taps a pose, verifies navigation to `PoseDetailScreen`, and verifies the ability to navigate back.
+        *   Taps "Flows", navigates to `FeaturedFlowsScreen`, taps a flow to see `FlowDetailScreen`, taps a pose within that flow to see `PoseDetailScreen`, and verifies the ability to navigate all the way back.
+        *   Taps "Sessions", navigates to `FeaturedSessionsScreen`, taps a session to see `SessionDetailScreen`, and then tests both possible nested journeys:
+            *   Taps a child *flow*, navigates to `FlowDetailScreen`, taps a child *pose* within that flow, navigates to `PoseDetailScreen`, and verifies the full navigation back.
+            *   Taps a child *pose*, navigates to `PoseDetailScreen`, and verifies the full navigation back.
 
-- [ ] **Implement the `PublicHomeScreen`**: Create a simple, stateless widget that serves as the main entry point for anonymous users. It will contain buttons or navigation elements to take the user to the "Featured" screens for each content type.
-
-- [ ] **Implement "Featured" List Screens**:
-    *   Create `FeaturedSessionsScreen`, `FeaturedFlowsScreen`, and `FeaturedPosesScreen`.
-    *   These screens will be stateful widgets that use the existing `FirestoreService` to fetch and display a stream of published content.
-    *   Create a reusable `ListItem` widget to maintain a consistent look and feel across these screens.
-
-- [ ] **Implement "Detail" Screens**:
-    *   Create `SessionDetailScreen`, `FlowDetailScreen`, and `PoseDetailScreen`.
-    *   These screens will receive an `id` from `go_router`'s path parameters.
-    *   They will use the `FirestoreService` to fetch the details of a single document by its ID.
-    *   The `SessionDetailScreen` and `FlowDetailScreen` must also implement the logic to fetch and display the contents of their respective sub-collections (`yoga_session_poses`, `yoga_session_flows`, `yoga_flow_poses`).
-
-- [ ] **Update Navigation**: Add the new routes for all the created screens to the `_router` object in `lib/main.dart`.
-
-- [ ] **Run and Pass Tests**: Continuously run the integration test created in the first step. This story is considered "done" only when all tests in `read_only_user_flow_test.dart` are passing.
-
-- [ ] **Update `app_test.dart`**: Once the feature is complete and tested, import and call the new `read_only_user_flow_test.dart` from the main `integration_test/app_test.dart` entry point to include it in the CI test suite.
+- [x] **Implement the `PublicHomeScreen`**: Create a stateless widget with navigation elements and Login/Create Account buttons.
+- [x] **Implement "Featured" List Screens**: Create `FeaturedPosesScreen`, `FeaturedFlowsScreen`, and `FeaturedSessionsScreen` with back buttons.
+- [x] **Implement "Detail" Screens**: Create `PoseDetailScreen`, `FlowDetailScreen`, and `SessionDetailScreen`.
+- [x] **Update Navigation**: Add all new screen routes to the `_router` in `lib/main.dart`.
+- [ ] **Run and Pass Tests**: Continuously run the integration tests until all defined journeys pass.
+- [ ] **Update `app_test.dart`**: Ensure `anonymous_user_flow_test.dart` is correctly called from `integration_test/app_test.dart`.
 
 ### Relevant Files for Context
-
 *   `README.md`
 *   `PLAN.md`
 *   `lib/main.dart`
@@ -42,3 +32,4 @@ This document outlines the steps to complete User Story 4.1: "As a new user, I w
 *   `lib/models/sessions/yoga_session_flow.dart`
 *   `lib/models/sessions/yoga_session_pose.dart`
 *   `integration_test/app_test.dart`
+*   `integration_test/anonymous_user_flow_test.dart`
