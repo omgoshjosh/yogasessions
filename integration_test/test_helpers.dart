@@ -1,189 +1,90 @@
-
-import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:yogasessions/services/seeding_service.dart';
 
 class TestHelpers {
   final FirebaseFirestore firestore;
   final FirebaseAuth auth;
+  final bool debug;
+  final String firebaseProjectId = 'yogasessions2';
+  late final SeedingService _seedingService;
 
-  TestHelpers(this.firestore, this.auth);
+  TestHelpers(this.firestore, this.auth, {this.debug = false}) {
+    _seedingService = SeedingService(
+      auth: auth,
+      firestore: firestore,
+      debug: debug,
+    );
+  }
+
+  void _log(String message) {
+    if (debug) {
+      print(message);
+    }
+  }
 
   Future<void> seedData() async {
-    await _seedUsers();
-    // In the future, we will uncomment these lines to seed all data.
-    // await _seedPoses();
-    // await _seedFlowsAndRelations();
-    // await _seedSessionsAndRelations();
+    _log('TestHelpers: Delegating seeding to SeedingService...');
+    await _seedingService.seedData();
+    _log('TestHelpers: Seeding complete.');
   }
 
   Future<void> clearData() async {
+    _log('Clearing data...');
     await _clearFirestore();
     await _clearAuth();
+    _log('Data clearing complete.');
   }
-
-  Future<void> _seedUsers() async {
-    final usersString = await rootBundle.loadString('assets/seeds/users_seed.json');
-    final List<dynamic> usersSeed = json.decode(usersString);
-
-    for (final userSeed in usersSeed) {
-      User? user;
-      // 1. Create user in Firebase Auth
-      if (userSeed['email'] != null) {
-        print('about to createUserWithEmailAndPassword');
-        UserCredential? userCredential = await auth.createUserWithEmailAndPassword(
-          email: userSeed['email'],
-          password: 'password123', // A standard password for all test users
-        );
-        if (userSeed['isEmailVerified'] == true) {
-          // Note: This does not actually send a verification email in the emulator.
-          // It just sets the flag. We might need a more robust way to handle this,
-          // but for now it mirrors the `isEmailVerified` property.
-        }
-        user = userCredential.user;
-      } else {
-        print('about to signInAnonymously');
-        // Create an anonymous user
-        // user = (await auth.signInAnonymously()).user;
-        try {
-          print(auth);
-          print('what is auth above');
-          final userCredential =
-          await auth.signInAnonymously();
-          user = userCredential.user;
-          print('Signed in with temporary account.');
-        } on FirebaseAuthException catch (e) {
-          switch (e.code) {
-            case 'operation-not-allowed':
-              print('Anonymous auth has not been enabled for this project.');
-              // break;
-            default:
-              print(e);
-              print('Unknown error.');
-          }
-          rethrow;
-        }
-        print('done signed in anonymously');
-      }
-
-      // 2. Use the generated UID to create a document in Firestore
-      if (user != null) {
-        print(userSeed);
-        print('userSeed above');
-        print(user);
-        print('user above');
-        print('about to set document in Firestore');
-        await firestore.collection('users').doc(user.uid).set({
-          'displayName': userSeed['displayName'],
-          'photoUrl': userSeed['photoUrl'],
-          'isAdmin': userSeed['isAdmin'] ?? false,
-          'isEmailVerified': user.emailVerified, // Use the actual value from Auth
-          'email': user.email, // Use the actual value from Auth
-        });
-      }
-    }
-  }
-
-  // Placeholder for seeding poses
-  // Future<void> _seedPoses() async {
-  //   final posesString = await rootBundle.loadString('assets/seeds/yoga_poses_seed.json');
-  //   final List<dynamic> poses = json.decode(posesString);
-  //   print('about to add poses');
-  //   for (final pose in poses) {
-  //     await firestore.collection('yoga_poses').add(pose);
-  //   }
-  // }
-
-  // Placeholder for seeding flows and their relations
-  // Future<void> _seedFlowsAndRelations() async {
-  //   final flowsString = await rootBundle.loadString('assets/seeds/yoga_flows_seed.json');
-  //   final Map<String, dynamic> flowsData = json.decode(flowsString);
-  //
-  //   final List<dynamic> flows = flowsData['yoga_flows'];
-  //   final Map<String, dynamic> relations = flowsData['yoga_flow_poses'];
-  //
-  //   for (final flow in flows) {
-  //      await firestore.collection('yoga_flows').doc(flow['name']).set(flow);
-  //   }
-  //
-  //   for (final entry in relations.entries) {
-  //     final String flowName = entry.key;
-  //     final List<dynamic> poses = entry.value;
-  //     for (final pose in poses) {
-  //       await firestore
-  //           .collection('yoga_flows')
-  //           .doc(flowName)
-  //           .collection('yoga_flow_poses')
-  //           .add(pose);
-  //     }
-  //   }
-  // }
-
-  // Placeholder for seeding sessions and their relations
-  // Future<void> _seedSessionsAndRelations() async {
-  //   final sessionsString = await rootBundle.loadString('assets/seeds/yoga_sessions_seed.json');
-  //   final Map<String, dynamic> sessionsData = json.decode(sessionsString);
-  //
-  //   final List<dynamic> sessions = sessionsData['yoga_sessions'];
-  //   final Map<String, dynamic> flowRelations = sessionsData['yoga_session_flows'];
-  //   final Map<String, dynamic> poseRelations = sessionsData['yoga_session_poses'];
-  //
-  //   for (final session in sessions) {
-  //     await firestore.collection('yoga_sessions').doc(session['name']).set(session);
-  //   }
-  //
-  //   for (final entry in flowRelations.entries) {
-  //      final String sessionName = entry.key;
-  //      final List<dynamic> flows = entry.value;
-  //      for (final flow in flows) {
-  //        await firestore
-  //           .collection('yoga_sessions')
-  //           .doc(sessionName)
-  //           .collection('yoga_session_flows')
-  //           .add(flow);
-  //      }
-  //   }
-  //
-  //   for (final entry in poseRelations.entries) {
-  //      final String sessionName = entry.key;
-  //      final List<dynamic> poses = entry.value;
-  //      for (final pose in poses) {
-  //        await firestore
-  //           .collection('yoga_sessions')
-  //           .doc(sessionName)
-  //           .collection('yoga_session_poses')
-  //           .add(pose);
-  //      }
-  //   }
-  // }
 
   Future<void> _clearFirestore() async {
-    // A more robust way to clear all collections
-    final collections = [
-      'users',
-      'yoga_poses',
-      'yoga_flows',
-      'yoga_sessions'
-      // We also need to delete subcollections, which is more complex.
-      // For now, this is a basic cleanup. A better way is to use the Firebase CLI
-      // or a cloud function to clear data in the emulator.
-    ];
-    
-    for (final collectionName in collections) {
-      final collection = await firestore.collection(collectionName).get();
-      for (final doc in collection.docs) {
-        await doc.reference.delete();
+    _log('Clearing Firestore...');
+    final collections = ['sessions', 'flows', 'poses', 'users'];
+    final subCollections = {
+      'sessions': ['yoga_session_flows', 'yoga_session_poses'],
+      'flows': ['yoga_flow_poses'],
+    };
+
+    for (final collectionName in collections.reversed) {
+      _log('  - Clearing collection: $collectionName');
+      try {
+        final collection = await firestore.collection(collectionName).get();
+        for (final doc in collection.docs) {
+          if (subCollections.containsKey(collectionName)) {
+            for (final subCollectionName in subCollections[collectionName]!) {
+              _log('    - Deleting sub-collection: $subCollectionName in doc ${doc.id}');
+              final subCollection = await doc.reference.collection(subCollectionName).get();
+              for (final subDoc in subCollection.docs) {
+                await subDoc.reference.delete();
+              }
+            }
+          }
+          await doc.reference.delete();
+          _log('    - Deleted doc: ${doc.id}');
+        }
+      } catch (e) {
+        _log('Error clearing collection $collectionName: $e');
       }
     }
+    _log('Firestore clearing finished.');
   }
 
   Future<void> _clearAuth() async {
-    // This is not directly possible from the client SDK.
-    // The common practice is to use the Firebase CLI to clear the Auth emulator.
-    // e.g., `firebase auth:export saved-users.json && firebase auth:import --hash-algo=HMAC_SHA256 --rounds=8 saved-users.json`
-    // with an empty file.
-    // For our tests, we will rely on the test runner to restart the emulator or we'll manage it manually.
+    _log('Clearing Auth users via Emulator REST API...');
+    final host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+    final url = 'http://$host:9099/emulator/v1/projects/$firebaseProjectId/accounts';
+
+    try {
+      final response = await http.delete(Uri.parse(url));
+      if (response.statusCode == 200) {
+        _log('  - Successfully cleared all Auth users.');
+      } else {
+        _log('  - Warning: Failed to clear Auth users. Status: ${response.statusCode}, Body: ${response.body}');
+      }
+    } catch (e) {
+      _log('  - Error during auth cleanup REST call: $e');
+    }
+    _log('Auth cleanup finished.');
   }
 }

@@ -5,17 +5,39 @@ part 'yoga_flow.g.dart';
 
 @freezed
 abstract class YogaFlow with _$YogaFlow {
-  // Added private empty constructor
   const YogaFlow._();
 
   const factory YogaFlow({
-    required String id,
-    String? originalId, // ID of the flow this was copied from, if any
-    required String name,
-    required String description,
-    @Default('-1') String creatorUserId, // -1 for system/seed, user ID otherwise
-    @Default(false) bool isPublished,   // True if visible in a public/featured library
+    String? id,
+    String? originalId,
+    @Default('Name Not Provided') String? name,
+    @Default('Description not provided.') String? description,
+    int? strengthDifficulty,
+    int? flexibilityDifficulty,
+    int? balanceDifficulty,
+    @Default([]) List<String> labels,
+    String? creatorUserId,
+    @Default(false) bool isPublished,
+    @Default(true) bool inSync,
   }) = _YogaFlow;
 
   factory YogaFlow.fromJson(Map<String, dynamic> json) => _$YogaFlowFromJson(json);
+
+  double get overallDifficulty {
+    double sum = 0;
+    int count = 0;
+    if (strengthDifficulty != null) {
+      sum += strengthDifficulty!;
+      count++;
+    }
+    if (flexibilityDifficulty != null) {
+      sum += flexibilityDifficulty!;
+      count++;
+    }
+    if (balanceDifficulty != null) {
+      sum += balanceDifficulty!;
+      count++;
+    }
+    return count == 0 ? 0.0 : sum / count;
+  }
 }

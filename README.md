@@ -11,6 +11,16 @@
 *   **User Authentication:** A complete login and signup flow to manage user accounts and persist their personal content.
 *   **Flexible Navigation:** A robust routing system built with `go_router` that supports nested views and a clear navigational hierarchy.
 
+### **Roadmap**
+
+This project is being developed in phases. Here is a summary of the major milestones:
+
+*   **Milestone 1: The Read-Only Experience (v0.1):** An anonymous user can download and browse all public content. This provides immediate value and serves as the foundation for the app.
+*   **Milestone 2: Authentication (v0.2):** A user can create an account, log in, and log out.
+*   **Milestone 3: User Library & Content Management (v0.3):** An authenticated user can save featured content and create their own custom content.
+*   **Milestone 4: Profile & Settings (v0.4):** A user can manage their profile and application settings.
+*   **Milestone 5: V1 Release:** Finalize the application for a public V1 release.
+
 ### **Requirements**
 
 #### Main functionality for all user accounts
@@ -157,6 +167,10 @@
             - session_pose creation behaves like flow_pose creation
             - session_pose linked pose out of sync behavior behaves like flow_pose linked pose out of sync behavior
 
+### **Future Enhancements**
+
+*   **Progress Tracking:** To improve user engagement and provide value, a future version of the app should include a tracking component. This would allow users to monitor their progress over time, view session completion history, and visualize trends in workout difficulty and frequency. This aligns with popular features in modern health, wellness, and exercise applications.
+
 ### **Admin functionality**
 - admin accounts create, update, and delete poses, flows, and sessions in the prebuilt readonly library.
 - admin accounts may impersonate any permanent user account.
@@ -179,3 +193,7 @@ TODO: determine which assets are required
 - **Continuous Integration:** All pull requests targeting the `main` branch will be automatically validated by a GitHub Actions workflow that runs linter checks and a full suite of integration tests against a live Firebase Emulator.
 - **Continuous Deployment:** When a pull request is merged into the `main` branch, the application will be automatically deployed to production.
 - **Sprint-Based Delivery:** The project will be developed in sprints. At the end of each sprint, the completed and tested features will be deployed. No new sprint will begin until the previous sprint's work is deployed.
+- **Running Integration Tests**: All integration tests are managed and run from a single entry point: `integration_test/app_test.dart`. This allows the CI system to discover and execute all test suites by running a single command. To add a new test suite:
+    1.  Create your new test file (e.g., `integration_test/new_feature_test.dart`).
+    2.  Import your new test file into `integration_test/app_test.dart` and give it a prefix (e.g., `import 'new_feature_test.dart' as new_feature;`).
+    3.  Add a call to your new test's `main()` method inside the `main()` function of `app_test.dart` (e.g., `new_feature.main();`).

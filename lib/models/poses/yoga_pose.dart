@@ -1,26 +1,46 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:yogasessions/utils/duration_converter.dart';
 
 part 'yoga_pose.freezed.dart';
 part 'yoga_pose.g.dart';
 
 @freezed
 abstract class YogaPose with _$YogaPose {
-  // Added private empty constructor
   const YogaPose._();
 
   const factory YogaPose({
-    required String id,
-    String? originalId, // ID of the pose this was copied from, if any
-    required String name,
-    required String description,
-    String? sanskritName,
-    String? category,
-    String? difficulty,
-    String? imageUrl,
-    String? videoUrl,
-    @Default('-1') String creatorUserId, // -1 for system/seed, user ID otherwise
-    @Default(false) bool isPublished,   // True if visible in a public/featured library
+    String? id,
+    String? originalId,
+    @Default('Name Not Provided') String? name,
+    @Default('Description not provided.') String? description,
+    @Default('Sanskrit Name Unavailable') String? sanskritName,
+    int? strengthDifficulty,
+    int? flexibilityDifficulty,
+    int? balanceDifficulty,
+    @Default([]) List<String> labels,
+    @DurationConverter() Duration? duration,
+    String? creatorUserId,
+    @Default(false) bool isPublished,
+    @Default(true) bool inSync,
   }) = _YogaPose;
 
   factory YogaPose.fromJson(Map<String, dynamic> json) => _$YogaPoseFromJson(json);
+
+  double get overallDifficulty {
+    double sum = 0;
+    int count = 0;
+    if (strengthDifficulty != null) {
+      sum += strengthDifficulty!;
+      count++;
+    }
+    if (flexibilityDifficulty != null) {
+      sum += flexibilityDifficulty!;
+      count++;
+    }
+    if (balanceDifficulty != null) {
+      sum += balanceDifficulty!;
+      count++;
+    }
+    return count == 0 ? 0.0 : sum / count;
+  }
 }

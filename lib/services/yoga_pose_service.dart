@@ -73,12 +73,12 @@ class YogaPoseService {
 
   // Update an existing YogaPose
   Future<void> updateYogaPose(YogaPose pose) async {
-    if (pose.id.isEmpty) {
+    if (pose.id == '' || pose.id == null) {
       throw ArgumentError('YogaPose ID cannot be empty for an update.');
     }
     // Corrected: Positional arguments
     await _firestoreService.updateDocument(
-        _collectionPath, pose.id, pose.toJson());
+        _collectionPath, pose.id!, pose.toJson());
   }
 
   // Delete a YogaPose

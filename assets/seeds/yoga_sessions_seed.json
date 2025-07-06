@@ -2,28 +2,97 @@
   "yoga_sessions": [
     {
       "name": "Morning Energizer",
-      "description": "A quick session to start your day with energy."
+      "description": "A quick session to start your day with energy.",
+      "strengthDifficulty": 2,
+      "flexibilityDifficulty": 2,
+      "balanceDifficulty": 3,
+      "labels": ["morning", "energizing"],
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     },
     {
       "name": "Evening Wind Down",
-      "description": "A gentle session to relax before bed."
+      "description": "A gentle session to relax before bed.",
+      "strengthDifficulty": 1,
+      "flexibilityDifficulty": 2,
+      "balanceDifficulty": 1,
+      "labels": ["evening", "relaxing"],
+      "creatorUserId": "-1",
+      "isPublished": true,
+      "inSync": true
     }
   ],
   "yoga_session_flows": {
     "Morning Energizer": [
-      "Sun Salutation A"
+      {
+        "id": "placeholder_session_flow_id",
+        "flowId": "Sun Salutation A",
+        "sessionId": "Morning Energizer",
+        "orderIndex": 0,
+        "name": "Sun Salutation A",
+        "description": "A classic vinyasa flow to warm up the body."
+      }
     ]
   },
   "yoga_session_poses": {
     "Morning Energizer": [
-        "Warrior I",
-        "Warrior II",
-        "Triangle Pose"
+      {
+        "id": "placeholder_session_pose_id_warrior1",
+        "poseId": "placeholder_pose_id_warrior1",
+        "sessionId": "Morning Energizer",
+        "orderIndex": 1,
+        "name": "Warrior I",
+        "description": "A powerful standing pose that builds strength and confidence.",
+        "duration": 45
+      },
+      {
+        "id": "placeholder_session_pose_id_warrior2",
+        "poseId": "placeholder_pose_id_warrior2",
+        "sessionId": "Morning Energizer",
+        "orderIndex": 2,
+        "name": "Warrior II",
+        "description": "A powerful standing pose that builds strength and confidence.",
+        "duration": 45
+      },
+      {
+        "id": "placeholder_session_pose_id_triangle",
+        "poseId": "placeholder_pose_id_triangle",
+        "sessionId": "Morning Energizer",
+        "orderIndex": 3,
+        "name": "Triangle Pose",
+        "description": "A standing pose that stretches the hamstrings, hips, and spine.",
+        "duration": 60
+      }
     ],
     "Evening Wind Down": [
-      "Child's Pose",
-      "Cat-Cow Pose",
-      "Corpse Pose"
+      {
+        "id": "placeholder_session_pose_id_childs",
+        "poseId": "placeholder_pose_id_childs",
+        "sessionId": "Evening Wind Down",
+        "orderIndex": 0,
+        "name": "Child's Pose",
+        "description": "A resting pose that gently stretches the back, hips, and ankles.",
+        "duration": 120
+      },
+      {
+        "id": "placeholder_session_pose_id_catcow",
+        "poseId": "placeholder_pose_id_catcow",
+        "sessionId": "Evening Wind Down",
+        "orderIndex": 1,
+        "name": "Cat-Cow Pose",
+        "description": "A gentle flow between two poses that warms the spine and relieves back stress.",
+        "duration": 120
+      },
+      {
+        "id": "placeholder_session_pose_id_corpse",
+        "poseId": "placeholder_pose_id_corpse",
+        "sessionId": "Evening Wind Down",
+        "orderIndex": 2,
+        "name": "Corpse Pose",
+        "description": "A final resting pose for deep relaxation.",
+        "duration": 300
+      }
     ]
   }
 }
