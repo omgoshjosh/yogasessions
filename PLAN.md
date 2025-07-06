@@ -54,7 +54,7 @@ To ensure quality and a steady development pace, the following criteria must be 
     *   **Tasks:**
         - [x] Initialize Flutter project, add dependencies, set up Firebase.
         - [x] Set up GitHub Actions to test pull requests against the `rc` branch.
-        - [ ] Use seed data to initialize the database for integration tests (User Story 1.3).
+        - [x] Use seed data to initialize the database for integration tests (User Story 1.3).
         - [ ] Set up GitHub Actions to deploy the `rc` branch to a staging environment (User Story 1.5).
 
 #### Epic 3: Data Models & Persistence

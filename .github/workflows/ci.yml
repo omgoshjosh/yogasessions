@@ -75,6 +75,7 @@ jobs:
           script: flutter test -r expanded integration_test/app_test.dart
 
   robo_test_android:
+    if: github.event.pull_request.base.ref == 'main'
     needs: test_android
     runs-on: ubuntu-latest
     steps:
@@ -99,7 +100,7 @@ jobs:
         with:
           project_id: 'yogasessions2'
       - name: Run Instrumentation Tests in Firebase Test Lab
-        run: gcloud firebase test android run --app build/app/outputs/bundle/debug/app-debug.aab
+        run: gcloud firebase test android run --device=model=Nexus6P --app build/app/outputs/bundle/debug/app-debug.aab
 
 
   # Job for iOS
