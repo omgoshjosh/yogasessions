@@ -66,6 +66,16 @@ To ensure quality and a steady development pace, the following criteria must be 
 *   **User Story 4.1:** "As a new user, I want to open the app and immediately see a list of featured yoga sessions I can explore, and browse all content without an account."
     *   **Tasks:**
         - [ ] Create Firestore collections, seed data, and build the UI to display the public library (`PublicHomeScreen`, `FeaturedPosesScreen`, etc.).
+*   **User Story 4.3 (New):** "As a user viewing a list of featured content, I want to filter the list by name, description, difficulty, and labels so I can find what I'm looking for more easily."
+    *   **Tasks:**
+        - [ ] Implement UI controls for filtering on `FeaturedPosesScreen`, `FeaturedFlowsScreen`, and `FeaturedSessionsScreen`.
+        - [ ] Update `FirestoreService` to support combining multiple `where` clauses for filtering.
+        - [ ] Write integration tests for the filtering functionality.
+*   **User Story 4.4 (New):** "As a user viewing a piece of featured content, I want a 'Copy Link' button so I can share it with others."
+    *   **Tasks:**
+        - [ ] Implement a 'Copy Link' button on the `SessionDetailScreen`, `FlowDetailScreen`, and `PoseDetailScreen`.
+        - [ ] Implement the logic to copy a deep link to the clipboard.
+        - [ ] Write integration tests to verify the button exists and the copy functionality works.
 
 #### Epic 8: Admin Functionality
 *   **User Story 1.4:** "As an app admin, I need an admin screen to sync the Firestore database with seed data for poses, flows, and sessions, so that I can develop and test the UI for the read-only library."
